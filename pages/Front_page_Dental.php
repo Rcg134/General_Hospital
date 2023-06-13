@@ -313,63 +313,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=780434833470431&autoLogAppEvents=1" nonce="tJc18jwe"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="../static/js/custom.js"></script>
 
-
-    <script>
-      function animateSection(sectionId) {
-        var section = document.querySelector(sectionId);
-        section.classList.add("slide-in");
-        setTimeout(function () {
-          section.classList.remove("slide-in");
-        }, 500);
-      }
-
-
-      function submitForm(event) {
-        event.preventDefault();
-
-      }
-
-
-
-
-      window.addEventListener("scroll", function () {
-         var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-         var scrollButton = document.querySelector(".scroll-to-top");
-       
-         if (scrollPosition > 200) {
-           scrollButton.classList.add("show");
-         } else {
-           scrollButton.classList.remove("show");
-         }
-       });
-
-
-
-
- function openMessenger() {
-      FB.CustomerChat.showDialog();
-    };
-
-    window.fbAsyncInit = function() {
-      FB.init({
-        xfbml            : true,
-        version          : 'v13.0'
-      });
-    };
-
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
-
-
-
-     
 
 
 

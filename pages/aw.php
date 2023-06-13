@@ -1,3 +1,8 @@
 <?php
-echo "wawawawawaaw";
+$a = 1;
+if ($a===1)
+{
+    echo "wawawawawaaw";
+}
+
 ?>
