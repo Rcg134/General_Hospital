@@ -1,0 +1,35 @@
+
+body {
+    background: url('../../img/dentalbg.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  .container {
+    margin-top: 150px;
+  }
+  
+  .card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-pink {
+    background-color: #ff69b4;
+    color: #fff;
+  }
+  
+  .loading {
+    display: none;
+    text-align: center;
+  }
+  
+  .logo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo img {
+    width: 150px;
+  }

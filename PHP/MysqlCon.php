@@ -8,11 +8,11 @@ class SqlCon{
 
 
  //Spareparts Database
-  function SetDBSpareParts(){
+  function SetDb(){
     $this->Servname = "localhost"; 
     $this->usr = "root"; 
     $this->pass = "p@ssword"; 
-    $this->dbname = "db_sparepartsimage"; 
+    $this->dbname = "db_genhospital"; 
   }
 
 
@@ -89,7 +89,7 @@ class SqlCon{
           return  $e->getMessage();
         }
 
-     $pdo = null;
+      $pdo = null;
 
      }
   

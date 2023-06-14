@@ -9,7 +9,7 @@
       href="../static/css/bootsrap.css"
     />
     <link rel="stylesheet" href="../static/css/bootsrap.min.css">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/customstyle.css">
 
   </head>
 
@@ -47,9 +47,32 @@
               <li class="nav-item">
                 <a class="nav-link" href="#contact" onclick="animateSection('#contact')">Contact</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link btn btn-schedule" href="Hospitalapp_Login.php">Log in</a>
-              </li>
+
+                              <?php	
+                                    session_start();				                                           
+                                    if(empty($_SESSION['name']))
+         														 {
+                                         echo " <li class='nav-item'>
+                                                   <a class='nav-link btn btn-schedule' href='Hospitalapp_Login.php'>Log in</a>
+                                                </li>";
+         														 }   
+         														 else{
+                                         echo "	<div class='collapse navbar-collapse' id='navbarNav'>
+                                                 <ul class='navbar-nav ml-auto'>
+                                                   <li class='nav-item dropdown'>
+                                                     <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                                        {$_SESSION['name']}
+                                                     </a>
+                                                     <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                                                       <a class='dropdown-item' href='#'>Panel</a>
+                                                       <a class='dropdown-item' href='logout.php'>Logout</a>
+                                                     </div>
+                                                   </li>
+                                                 </ul>
+                                               </div>";  
+                                     }         	 
+								              ?>
+
             </ul>
           </div>
         </nav>
