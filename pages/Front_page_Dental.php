@@ -57,14 +57,17 @@
                                                 </li>";
          														 }   
          														 else{
+                                        $status = ($_SESSION['usertypeid'] != 0) ? "<a class='dropdown-item' href='admin_index.php'>Panel</a>" : '';
                                          echo "	<div class='collapse navbar-collapse' id='navbarNav'>
                                                  <ul class='navbar-nav ml-auto'>
                                                    <li class='nav-item dropdown'>
                                                      <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                                                         {$_SESSION['name']}
                                                      </a>
+                                                      <label id='lblid' hidden> {$_SESSION['iid']} </label>
+                                                      <label id='lblusrtypeid' hidden> {$_SESSION['usertypeid']} </label>
                                                      <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                                                       <a class='dropdown-item' href='#'>Panel</a>
+                                                        {$status}
                                                        <a class='dropdown-item' href='logout.php'>Logout</a>
                                                      </div>
                                                    </li>
@@ -188,7 +191,7 @@
         <div class="carousel-item active">
           <img src="../img/person.jpg" alt="Doctor 1">
           <div class="carousel-caption">
-            <h3>Dr. John Smith</h3>
+            <h3>Dr. Dr. John Smith</h3>
             <p>Cardiology</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo eu elit consequat mattis. Aliquam malesuada finibus lacus, sed finibus justo vestibulum ac.</p>
           </div>

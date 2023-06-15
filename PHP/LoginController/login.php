@@ -30,20 +30,26 @@ if ($rowCount > 0){
       $authpass = $row['password'];
       $fn = $row['firstname'];
       $ln = $row['lastname'];
+      $isadmin = $row['isadmin'];
+      $iid = $row['id'];
+      $usertypeid = $row['user_type_id'];
   }
 
-  if (password_verify($Password, $authpass)) {
-
+  if (password_verify($Password, $authpass)) 
+  {
     session_start();
     $fullname = $fn . " " . $ln;
     $_SESSION['name'] = $fullname ;
-    echo $fullname; 
-
+    $_SESSION['fn'] = $fn;
+    $_SESSION['ln'] = $ln;
+    $_SESSION['isadmin'] = $isadmin ;
+    $_SESSION['iid'] = $iid;
+    $_SESSION['usertypeid'] = $usertypeid;
+    echo true; 
   }
 }
 
 }
-
  catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
 }

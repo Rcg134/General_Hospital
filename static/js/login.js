@@ -109,8 +109,7 @@ function AuthUser(PHP,username,password){
             processData: false,
             cache: false,
             success: function(dataResult){
-                 if(dataResult != ''){
-                   sessionStorage.setItem("username", dataResult);
+                 if(dataResult == true){
                    $("#loading").hide();
                    location.href = "Front_page_Dental.php"
                  }
@@ -155,7 +154,6 @@ function AuthUser(PHP,username,password){
             cache: false,
             success: function(dataResult){
                  if(dataResult == true){
-                   sessionStorage.setItem("name", dataResult);
                     alert("Sign-up successful!"); 
                     $("#login-form").show();
                     $("#loading").hide();
