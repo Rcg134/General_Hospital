@@ -74,19 +74,28 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+          
             <span class="d-none d-md-block dropdown-toggle ps-2">
                <?php 
-                session_start();			
+                session_start();
+
                  if(empty($_SESSION["name"])){
                     header('location:Hospitalapp_Login.php');
                  }
                  else{
-                    echo $_SESSION['name'];
+                   $id = $_SESSION['usertypeid'] == 2 ? "DR " . $_SESSION['name'] :  $_SESSION['name'];
+                   echo $id;
                  }
                
                ?>
 
             </span>
+            
+             <label id=usertypeid hidden>
+               <?php 
+                    echo $_SESSION['usertypeid'];
+                ?>
+             </label>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">

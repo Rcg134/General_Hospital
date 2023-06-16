@@ -30,7 +30,6 @@ if ($rowCount > 0){
       $authpass = $row['password'];
       $fn = $row['firstname'];
       $ln = $row['lastname'];
-      $isadmin = $row['isadmin'];
       $iid = $row['id'];
       $usertypeid = $row['user_type_id'];
   }
@@ -42,7 +41,6 @@ if ($rowCount > 0){
     $_SESSION['name'] = $fullname ;
     $_SESSION['fn'] = $fn;
     $_SESSION['ln'] = $ln;
-    $_SESSION['isadmin'] = $isadmin ;
     $_SESSION['iid'] = $iid;
     $_SESSION['usertypeid'] = $usertypeid;
     echo true; 

@@ -89,8 +89,6 @@ class SqlCon{
           return  $e->getMessage();
         }
 
-      $pdo = null;
-
      }
   
 

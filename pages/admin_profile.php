@@ -10,57 +10,16 @@
 ?>
 
 
+<?php
+  include("../PHP/set_connection.php");
+?>
+
+<?php
+  include("../PHP/HospitalappController/admin_profile_get.php");
+?>
 
 
 <main id="main" class="main">
-
-
-
-<!-- LIST OF USER -->
-<div class="pagetitle">
-   <h1>Newly Registered User</h1>
- </div>
- <!-- End Page Title -->
- <section class="section" id="newreguser">
-   <div class="row">
-     <div class="col-lg-12">
-       <div class="row">
-         <!-- Start Content -->
-         <div class="card info-card">
-           <div class="card-body">
-             <div class="col-lg-12">
-               <div class="row">
-                 <div class="row g-3">
-                   
-
-                 <?php
-                      include("../PHP/HospitalappController/table/registered_user_table.php");
-                   ?>
-
-            
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-         <!-- End Content -->
-       </div>
-     </div>
-   </div>
-   </div>
-   <!-- End Content -->
-   </div>
-   </div>
-   </div>
- </section>
-
-
-
-
-
-
-
-
 
 
 
@@ -78,7 +37,7 @@
             <div class="card-body">
               <div class="col-lg-12">
                 <div class="row">
-                  <form class="row g-3">
+                  <form class="row g-3" id ="profileform">
                     <div class="col-md-6">
                       <label for="validationDefault01" class="form-label">First name</label>
                       <input type="text" class="form-control" id="proffn"
@@ -109,31 +68,56 @@
                     </div>
                     <div class="col-md-6">
                       <label for="validationDefault03" class="form-label">Contact Number</label>
-                      <input type="text" class="form-control" id="profcn" required>
+                      <input type="text" class="form-control" id="profcn" value=
+
+                         <?php 
+                            $contact = !empty($contact_number) ? $contact_number : '';
+                            echo $contact;
+                         ?> 
+
+                      required>
                     </div>
                     <!-- <div class="col-md-3"><label for="validationDefault04" class="form-label">State</label><select class="form-select" id="validationDefault04" required><option selected disabled value="">Choose...</option><option>...</option></select></div> -->
                     <div class="col-md-6">
                       <label for="validationDefault03" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="profemail" placeholder="name@example.com">
+                      <input type="email" class="form-control" id="profemail" placeholder="name@example.com" value=
+
+                            <?php 
+                               $iemail = !empty($email) ? $email : '';
+                               echo $iemail
+                            ?> required>
+
                     </div>
                     <div class="col-md-6">
                       <label for="validationDefault05" class="form-label">Birth date</label>
-                      <input type="date" id="profbdate" class="form-control">
+                      <input type="date" id="profbdate" class="form-control" value=
+
+                         <?php 
+                            $ibrithdate = !empty($birthdate) ? $birthdate : '';
+                            echo $ibrithdate;
+                         ?>>
+
                     </div>
-                    <div class="col-md-6">
-                      <label for="validationDefault05" class="form-label">Specialized</label>
-                      <select class="form-control" id="selectspecialized">
-                        <option selected="1">Cardiology</option>
-                        <option value="2">Pedia</option>
-                        <option value="3">Neuro</option>
-                      </select>
-                    </div>
+
+          
+                        <?php
+                          if ($_SESSION['usertypeid'] == 1 || $_SESSION['usertypeid'] == 2 ) 
+                          {
+                            include("../PHP/HospitalappController/select/specialize.php");
+
+                          }
+                           
+                        ?>
+
+
                     <div class="col-md-12">
+
                       <label for="validationDefault05" class="form-label">BIO</label>
-                      <textarea class="form-control" placeholder="Biography" id="profdesc"></textarea>
+                      <textarea class="form-control" placeholder="Biography" id="profdesc"><?php $ibio = !empty($bio) ? $bio : ''; echo $ibio;?></textarea>
+           
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary" type="submit" onclick="submitprofileupdate(event)">Save</button>
+                      <button class="btn btn-primary" type="submit">Save</button>
                     </div>
                   </form>
                 </div>
@@ -157,9 +141,11 @@
   </main>
   <!-- End #main -->
 
-  
 
-  
+
 <?php
   include("admin_footer.php");
 ?>
+
+
+<script src="../static/js/admin_profile.js"></script> 

@@ -1,29 +1,50 @@
-function submitprofileupdate(event){
-    var firstname = $("#proffn").val();
-    var lastname = $("#profln").val();
-    var email = $("#profemail").val();
-    var birthdate = $("#profbdate").val();
-    var contactnumber = $("#profcn").val();
-    var bio = $("#profdesc").val();
-    var usertypeid = $("#lblusrtypeid").text();
-    var iid = $("#lblid").text();
-    var specialized = $("#selectspecialized").text();
-    
 
 
-    
-    profileupdate('../PHP/LoginController/admin_profile_insert.php',
-                   firstname,
-                   lastname,
-                   email,
-                   birthdate,
-                   contactnumber,
-                   bio,
-                   usertypeid,
-                   iid,
-                   specialized);
-}
+$(function() {
 
+
+});
+
+
+
+$("#profileform").submit(function(event) {
+  event.preventDefault();
+  var firstname = $("#proffn").val();
+  var lastname = $("#profln").val();
+  var email = $("#profemail").val();
+  var birthdate = $("#profbdate").val();
+  var contactnumber = $("#profcn").val();
+  var bio = $("#profdesc").val();
+  var usertypeid = $("#usertypeid").text().trim();
+  var specialized = $("#selectspecialized").val();
+  
+  if (specialized == 0){
+    alert("input all fields")
+    return;
+  }
+
+  
+  profileupdate('../PHP/HospitalappController/admin_profile_insert.php',
+                 firstname,
+                 lastname,
+                 email,
+                 birthdate,
+                 contactnumber,
+                 bio,
+                 usertypeid,
+                 specialized);
+
+
+});
+
+
+
+
+
+
+
+
+// REQUEST TO SERVER ----------------------------------------
 
 
 
@@ -35,7 +56,6 @@ function profileupdate(PHP,
                        contactnumber,
                        bio,
                        usertypeid,
-                       iid,
                        specialized)
 {
     var form_data = new FormData();
@@ -47,7 +67,6 @@ function profileupdate(PHP,
     form_data.append("Contactnumber", contactnumber)  
     form_data.append("Bio", bio)  
     form_data.append("Usertypeid", usertypeid)  
-    form_data.append("Iid", iid)
     form_data.append("Specialized", specialized)  
 
 
@@ -61,12 +80,11 @@ function profileupdate(PHP,
             cache: false,
             success: function(dataResult){
                  if(dataResult == true){
-                   $("#loading").hide();
+                    alert("Successfully updated")
+                    location.reload();
                  }
                  else{
-                    alert('Wrong Credentials');
-                    $("#login-form").show();
-                    $("#loading").hide();
+                  alert(dataResult)
                  }
                      
             },

@@ -1,14 +1,17 @@
 <?php
 
-require '../PHP/MysqlCon.php';
 
-$Conn = new SqlCon();
-
-$Conn->SetDb();
-
-$pdo = $Conn->SetSQLCon();
-
-$data = $Conn->SqlConSelect("select id, username, password, firstname, lastname, user_type_id, isadmin, idate, active FROM tbl_login_user WHERE user_type_id != 1 ",$pdo);
+$data = $Conn->SqlConSelect("select id, 
+                                    username, 
+                                    password, 
+                                    firstname, 
+                                    lastname, 
+                                    user_type_id, 
+                                    isadmin, idate, 
+                                    active 
+                            FROM tbl_login_user 
+                            WHERE user_type_id != 1 AND
+                                  user_type_id = 0",$pdo);
 
 
 
@@ -31,6 +34,7 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
     <table class="table">
         <thead>
             <tr>
+                <th hidden>id</th>
                 <th>Action</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -40,9 +44,11 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
         <tbody>
             <?php foreach ($currentPageData as $row): ?>
                 <tr>
+                     <td hidden><?php echo $row['id']; ?></td>
                     <td>
-                        <button type="button" class="btn btn-success"><i class="bi bi-check-circle"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#userrolemodal" onclick="getcolumn(this)">
+                            <i class="bi bi-check-circle"></i>
+                        </button>
                     </td>
                     <td><?php echo $row['firstname']; ?></td>
                     <td><?php echo $row['lastname']; ?></td>
