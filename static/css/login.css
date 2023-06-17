@@ -1,8 +1,9 @@
 
 body {
-    background: url('../../img/dentalbg.jpg') no-repeat center center fixed;
+    background: url('../../img/dentalbg.jfif') no-repeat center center fixed;
     background-size: cover;
   }
+
   
   .container {
     margin-top: 150px;
@@ -31,5 +32,5 @@ body {
   }
   
   .logo img {
-    width: 150px;
+    width: 10%;
   }

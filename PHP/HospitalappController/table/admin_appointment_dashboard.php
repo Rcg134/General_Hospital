@@ -1,17 +1,14 @@
 <?php
 
+$userid = $_SESSION['iid'];
 
-$data = $Conn->SqlConSelect("select id, 
-                                    username, 
-                                    password, 
-                                    firstname, 
-                                    lastname, 
-                                    user_type_id, 
-                                    isadmin, idate, 
-                                    active 
-                            FROM tbl_login_user 
-                            WHERE user_type_id != 1 AND
-                                  user_type_id = 0",$pdo);
+$sqltext = "CALL appointment_get(:Iid)";
+
+$arraydata= array(
+    'Iid' => "$userid");
+
+
+$data = $Conn->SqlConParamSelect($sqltext,$arraydata,$pdo);
 
 
 
@@ -30,19 +27,23 @@ $endIndex = $startIndex + $itemsPerPage - 1;
 $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
 ?>
 
-
+<div class="container mt-5">
     <table class="table table-striped">
         <thead>
             <tr>
                 <th hidden>id</th>
                 <th>Action</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Date Registered</th>
+                <th>Full Name</th>
+                <th>Message</th>
+                <th>Appointment Date</th>
+                <th>Appointment Time</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($currentPageData as $row): ?>
+            <?php foreach ($currentPageData as $row): 
+                  $timestamp = strtotime($row['appointment_time']);
+                  $timeFormat = date('h:i A', $timestamp);
+                ?>
                 <tr>
                      <td hidden><?php echo $row['id']; ?></td>
                     <td>
@@ -50,9 +51,10 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
                             <i class="bi bi-check-circle"></i>
                         </button>
                     </td>
-                    <td><?php echo $row['firstname']; ?></td>
-                    <td><?php echo $row['lastname']; ?></td>
-                    <td><?php echo $row['idate']; ?></td>
+                    <td><?php echo $row['full_name']; ?></td>
+                    <td><?php echo $row['message']; ?></td>
+                    <td><?php echo $row['appointment_date']; ?></td>
+                    <td><?php echo $timeFormat; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -84,3 +86,4 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
           ?>
         </ul>
     </div>
+</div>

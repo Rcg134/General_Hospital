@@ -10,13 +10,6 @@
 ?>
 
 
-<?php
-  include("../PHP/set_connection.php");
-?>
-
-<?php
-  include("../PHP/HospitalappController/admin_profile_get.php");
-?>
 
 
 <main id="main" class="main">
@@ -75,7 +68,7 @@
                             echo $contact;
                          ?> 
 
-                      required>
+                      >
                     </div>
                     <!-- <div class="col-md-3"><label for="validationDefault04" class="form-label">State</label><select class="form-select" id="validationDefault04" required><option selected disabled value="">Choose...</option><option>...</option></select></div> -->
                     <div class="col-md-6">
@@ -85,7 +78,7 @@
                             <?php 
                                $iemail = !empty($email) ? $email : '';
                                echo $iemail
-                            ?> required>
+                            ?> >
 
                     </div>
                     <div class="col-md-6">

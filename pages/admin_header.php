@@ -17,6 +17,7 @@
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  
   <!-- Vendor CSS Files -->
   <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -29,7 +30,11 @@
 
   <!-- Template Main CSS File -->
   <link href="../static/css/style.css" rel="stylesheet">
+  <link href="../static/css/admin_customstyle.css" rel="stylesheet">
 
+  <!-- Calendar -->
+  <link href="../static/css/calendar.min.css" rel="stylesheet">
+  
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: May 30 2023 with Bootstrap v5.3.0
@@ -40,6 +45,9 @@
 </head>
 
 <body>
+
+
+
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
@@ -125,3 +133,13 @@
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
+
+<!-- GET USER PROFILE -->
+  
+  <?php
+     include("../PHP/set_connection.php");
+   ?>
+   
+   <?php
+     include("../PHP/HospitalappController/admin_profile_get.php");
+   ?>

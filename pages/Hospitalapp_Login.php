@@ -13,7 +13,7 @@
       <div class="col-md-6 offset-md-3">
         <div class="card">
           <div class="logo">
-            <img src="../img/teeth-login.png" alt="Dentist Website Logo">
+            <img src="../img/doctor-login.png" alt="Dentist Website Logo">
           </div>
           <div id="login-form">
             <form id="login-form">

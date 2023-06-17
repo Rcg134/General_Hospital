@@ -57,7 +57,7 @@
                                                 </li>";
          														 }   
          														 else{
-                                        $status = ($_SESSION['usertypeid'] != 0) ? "<a class='dropdown-item' href='admin_index.php'>Panel</a>" : '';
+                                        $status = ($_SESSION['usertypeid'] != 0) ? "<a class='dropdown-item' href='admin_dashboard.php'>Panel</a>" : '';
                                          echo "	<div class='collapse navbar-collapse' id='navbarNav'>
                                                  <ul class='navbar-nav ml-auto'>
                                                    <li class='nav-item dropdown'>

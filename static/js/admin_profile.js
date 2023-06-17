@@ -41,9 +41,6 @@ $("#profileform").submit(function(event) {
 
 
 
-
-
-
 // REQUEST TO SERVER ----------------------------------------
 
 

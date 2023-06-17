@@ -10,10 +10,6 @@
 ?>
 
 
-<?php
-  include("../PHP/set_connection.php");
-?>
-
 <main id="main" class="main">
 
 <!-- LIST OF USER -->
