@@ -7,11 +7,13 @@ $data = $Conn->SqlConSelect("select id,
                                     firstname, 
                                     lastname, 
                                     user_type_id, 
-                                    isadmin, idate, 
+                                    isadmin, 
+                                    idate, 
                                     active 
                             FROM tbl_login_user 
                             WHERE user_type_id != 1 AND
-                                  user_type_id = 0",$pdo);
+                                  user_type_id = 0
+                            ORDER BY idate asc",$pdo);
 
 
 

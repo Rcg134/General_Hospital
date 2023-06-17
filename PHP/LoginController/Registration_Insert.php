@@ -17,7 +17,7 @@
 
 
       $sql = "insert into `tbl_login_user`(username, password, lastname, firstname) 
-      VALUES (:username, :password, :firstname, :lastname)";
+      VALUES (:username, :password, :lastname, :firstname)";
 
   
         $arraydata= array(
