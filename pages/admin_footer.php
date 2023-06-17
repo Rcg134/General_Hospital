@@ -14,15 +14,13 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 
-    
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-  <!-- # Calendar -->
-  <script src="../static/js/moment.min.js"></script>
-  <script src="../static/js/calendar.js"></script>
+
 
   <!-- Vendor JS Files -->
   <script src="../static/vendor/apexcharts/apexcharts.min.js"></script>
@@ -32,11 +30,16 @@
   <script src="../static/vendor/quill/quill.min.js"></script>
   <script src="../static/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="../static/vendor/tinymce/tinymce.min.js"></script>
-  <script src="../static/vendor/php-email-form/validate.js"></script>
+  <script src="../static/vendor/php-email-form/validate.js"></script> 
 
-   <!-- Template Main JS File -->
+
+  <!-- Template Main JS File -->
   <script src="../static/js/main.js"></script>
   <script src="../static/js/jquery.min.js"></script>
+
+  <!-- # Calendar -->
+  <script src="../static/js/moment.min.js"></script>
+  <script src="../static/js/calendar.js"></script>
 
 
 </html>

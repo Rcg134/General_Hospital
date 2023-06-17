@@ -27,7 +27,8 @@
             <div class="col-md-12">
               <div class="card info-card">
                 <div class="card-body">
-       
+                  <h5 class="card-title">Calendar</h5>
+
                     <div id="calendar"></div>
 
                 </div>
@@ -48,7 +49,7 @@
                 <div class="card-body">
                  <div class="row">
                   <div class="col-md-12">
-                  <h5 class="card-title">Default Table</h5>
+                  <h5 class="card-title">List of Appointments</h5>
                    <?php
                       include("../PHP/HospitalappController/table/admin_appointment_dashboard.php");
                    ?> 
@@ -73,6 +74,5 @@
   include("admin_footer.php");
 ?>
 
+<script src="../static/js/doctor_calendar_dashboard.js"></script> 
 
-
-<script src="../static/js/admin_apply_appointment.js"></script> 
