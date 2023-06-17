@@ -27,7 +27,7 @@ $endIndex = $startIndex + $itemsPerPage - 1;
 $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
 ?>
 
-<div class="container mt-5">
+<div class="table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>

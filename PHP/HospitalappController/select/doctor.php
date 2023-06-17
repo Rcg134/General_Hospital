@@ -1,5 +1,3 @@
-
-
 <?php
 
 $data = $Conn->SqlConSelect("CALL doctor_get()",$pdo);
@@ -22,10 +20,3 @@ echo $select .= $option . "</select> </div>" ;
 
 
 ?>
-
-
-
-
-
-
-

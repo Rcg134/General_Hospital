@@ -14,7 +14,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Admin Dashboard</h1>
+      <h1>Doctor Dashboard</h1>
     </div><!-- End Page Title -->
   
 
@@ -41,17 +41,18 @@
     <section class="section dashboard">
       <div class="row">
         <div class="col-lg-12">
-          <div class="row">
+             <!-- End Page Title -->
+  
             <!-- Start Content -->
-            <div class="col-md-12">
               <div class="card info-card">
                 <div class="card-body">
                  <div class="row">
                   <div class="col-md-12">
-
+                  <h5 class="card-title">Default Table</h5>
+                   <?php
+                      include("../PHP/HospitalappController/table/admin_appointment_dashboard.php");
+                   ?> 
                    </div>
-                  </div>
-                </div>
               </div>
             </div>
             <!-- End Content -->

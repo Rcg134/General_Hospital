@@ -32,7 +32,7 @@ $endIndex = $startIndex + $itemsPerPage - 1;
 $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
 ?>
 
-
+<div class="table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -86,3 +86,4 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
           ?>
         </ul>
     </div>
+</div>

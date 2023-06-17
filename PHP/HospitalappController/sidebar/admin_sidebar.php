@@ -43,12 +43,21 @@
   {
     echo "
     <li class='nav-item'>
-       <a class='nav-link ' href='admin_dashboard.php'>
+       <a class='nav-link ' href='doctor_dashboard.php'>
          <i class='bi bi-grid'></i>
          <span>Dashboard</span>
        </a>
     </li>";
 
+  }
+  else{
+    echo "
+    <li class='nav-item'>
+       <a class='nav-link ' href='patient_dashboard.php'>
+         <i class='bi bi-grid'></i>
+         <span>Dashboard</span>
+       </a>
+    </li>";
   }
 
 

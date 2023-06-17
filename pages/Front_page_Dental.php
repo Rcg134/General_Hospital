@@ -57,7 +57,21 @@
                                                 </li>";
          														 }   
          														 else{
-                                        $status = ($_SESSION['usertypeid'] != 0) ? "<a class='dropdown-item' href='admin_dashboard.php'>Panel</a>" : '';
+                                        $usertype = $_SESSION['usertypeid'];
+                                        $status = '';
+                                         // Doctor                                       
+                                        if ($usertype == 2) {
+                                          $status =  "<a class='dropdown-item' href='doctor_dashboard.php'>Panel</a>";
+                                        }
+                                        // Patient   
+                                        else if ($usertype == 3) {
+                                          $status = "<a class='dropdown-item' href='patient_dashboard.php'>Panel</a>";
+                                        }
+                                        // admin   
+                                        else{
+                                          $status =  "<a class='dropdown-item' href='admin_dashboard.php'>Panel</a>";
+                                        }
+
                                          echo "	<div class='collapse navbar-collapse' id='navbarNav'>
                                                  <ul class='navbar-nav ml-auto'>
                                                    <li class='nav-item dropdown'>

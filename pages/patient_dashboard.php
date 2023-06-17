@@ -14,7 +14,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Admin Dashboard</h1>
+      <h1>Patient Dashboard</h1>
     </div><!-- End Page Title -->
   
 
