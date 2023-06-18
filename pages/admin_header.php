@@ -79,11 +79,11 @@
                <?php 
                 session_start();
 
-                 if(empty($_SESSION["name"])){
+                 if(empty($_SESSION["iid"])){
                     header('location:Hospitalapp_Login.php');
                  }
                  else{
-                   $id = $_SESSION['usertypeid'] == 2 ? "DR " . $_SESSION['name'] :  $_SESSION['name'];
+                   $id = $_SESSION['usertypeid'] == 2 ? "Dr " . $_SESSION['name'] :  $_SESSION['name'];
                    echo $id;
                  }
                
