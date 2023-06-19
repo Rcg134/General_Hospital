@@ -57,7 +57,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="validationDefault03" class="form-label">Contact Number</label>
-                                            <input type="text" required class="form-control" id="profcn" 
+                                            <input type="text" required onkeypress="return allowNumbersOnly(event)" class="form-control" id="profcn" 
                                                   value=<?php 
                                                         $contact = !empty($contact_number) ? $contact_number : '';
                                                         echo $contact;
@@ -87,6 +87,18 @@
                                              {
                                                include("../PHP/HospitalappController/select/specialize.php");
                                              }      
+                                           ?>
+
+
+                                          <?php
+                                             if ($_SESSION['usertypeid'] == 1 || $_SESSION['usertypeid'] == 2 ) 
+                                             {
+                                                $ivalue_Day = !empty($value_Day) ? $value_Day : '';
+                                               echo "<div class='col-md-12> 
+                                               <label for='validationDefault03' class='form-label'>Maximum Patients per day</label>
+                                               <input type='text' required class='form-control' onkeypress='return allowNumbersOnly(event)' id='profvalueday' value='{$ivalue_Day}'>
+                                               </div>";
+                                              }      
                                            ?>
 
                                         <div class="col-md-12">

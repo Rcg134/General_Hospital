@@ -8,9 +8,13 @@ $email;
 $birthdate;
 $data;
 $specialize;
+$value_Day;
 
 $usertypeid = $_SESSION['usertypeid'];
 $userid = $_SESSION['iid'];
+
+
+
 
 
   // Patient
@@ -21,7 +25,7 @@ if ($usertypeid == 3)
  // Doctor 
 else if ($usertypeid == 2)
 {
-    $data = $Conn->SqlConSelect("select description, contact_number, email, birthdate,specialize_id FROM tbl_doctor_details WHERE login_id = {$userid}",$pdo);
+    $data = $Conn->SqlConSelect("CALL doctor_details_get({$userid})",$pdo);
 }
 
 
@@ -39,6 +43,7 @@ if ($usertypeid != 1)
             $email = $row['email'];
             $birthdate = $row['birthdate'];
             $specialize = $usertypeid == 2 ? $row['specialize_id'] : '';
+            $value_Day = $usertypeid == 2 ? $row['value_day'] : '';
         
         }
     }

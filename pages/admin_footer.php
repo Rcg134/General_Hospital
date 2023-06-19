@@ -40,6 +40,6 @@
   <!-- # Calendar -->
   <script src="../static/js/moment.min.js"></script>
   <script src="../static/js/calendar.js"></script>
-
-
+  <script src="../static/js/validation.js"></script>
+  
 </html>

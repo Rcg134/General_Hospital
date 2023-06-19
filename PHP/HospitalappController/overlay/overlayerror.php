@@ -17,7 +17,7 @@ $useridtype = $_SESSION['usertypeid'];
 
   // Doctor
   if ($useridtype == 2){
-    if (empty($bio) || empty($contact_number) || empty($birthdate) || empty($specialize) ){
+    if (empty($bio) || empty($contact_number) || empty($birthdate) || empty($specialize) || empty($value_Day)){
       echo $overlay; 
    }
   }

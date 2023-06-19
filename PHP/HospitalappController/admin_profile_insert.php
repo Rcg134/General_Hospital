@@ -17,14 +17,20 @@
     $Usertypeid = $_POST['Usertypeid'];
     $Iid = $_SESSION['iid'];
     $Specialized = $_POST['Specialized'];
-
-
- 
-
+    $Valuepatient = $_POST['Valuepatient'];
 
 
 
-      $sql = "CALL Insert_profile(:Firstname, :Lastname, :Email, :Birthdate, :Contactnumber, :Bio, :Usertypeid, :Iid, :Specialized)";
+      $sql = "CALL Insert_profile(:Firstname, 
+                                  :Lastname, 
+                                  :Email, 
+                                  :Birthdate, 
+                                  :Contactnumber, 
+                                  :Bio, 
+                                  :Usertypeid, 
+                                  :Iid, 
+                                  :Specialized, 
+                                  :Valuepatient)";
 
   
         $arraydata= array(
@@ -36,7 +42,8 @@
                 'Bio' => "$Bio",
                 'Usertypeid' => "$Usertypeid",
                 'Iid' => "$Iid",
-                'Specialized' => "$Specialized");
+                'Specialized' => "$Specialized",
+                'Valuepatient' => "$Valuepatient");
  
 
 
