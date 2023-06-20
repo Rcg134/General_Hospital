@@ -1,16 +1,4 @@
-<?php
-  include("admin_header.php");
- ?>
 
-
-<?php
-  include("admin_sidebar.php");
-?>
-
-
-
-
-<main id="main" class="main">
 
 
 
@@ -19,9 +7,8 @@
         <h1>Profile</h1>
     </div>
     <!-- End Page Title -->
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
+
+
                 <div class="row">
                     <!-- Start Content -->
                     <div class="card info-card">
@@ -121,27 +108,11 @@
                     </div>
                     <!-- End Content -->
                 </div>
-            </div>
-        </div>
-        </div>
-        <!-- End Content -->
-        </div>
-        </div>
-        </div>
-    </section>
+
+
+
+
 
 
     <!-- #region -->
 
-
-</main>
-<!-- End #main -->
-
-
-
-<?php
-  include("admin_footer.php");
-?>
-
-
-<script src="../static/js/admin_profile.js"></script>

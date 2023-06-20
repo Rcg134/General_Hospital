@@ -7,7 +7,7 @@
 $overlay = "<div id='overlay'>
              <div class='overlay-content'>
              <h2 id='animated-text'>You have to complete your profile first</h2>
-                <a href='admin_profile.php' class='btn btn-primary'>Go to your Profile</a>
+                <a href='admin_profile_header.php' class='btn btn-primary'>Go to your Profile</a>
                 </div>
               </div>
              </div>

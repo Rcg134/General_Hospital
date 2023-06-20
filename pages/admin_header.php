@@ -34,6 +34,9 @@
 
   <!-- Calendar -->
   <link href="../static/css/calendar.min.css" rel="stylesheet">
+  
+    <!-- Cropper -->
+    <link href="../static/css/cropper.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -102,7 +105,7 @@
 
           
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="admin_profile.php">
+              <a class="dropdown-item d-flex align-items-center" href="admin_profile_header.php">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>

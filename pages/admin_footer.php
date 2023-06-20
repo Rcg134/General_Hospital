@@ -41,5 +41,8 @@
   <script src="../static/js/moment.min.js"></script>
   <script src="../static/js/calendar.js"></script>
   <script src="../static/js/validation.js"></script>
+
+  <!-- Cropper -->
+  <script src="../static/js/cropper.min.js"></script>
   
 </html>

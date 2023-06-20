@@ -10,7 +10,7 @@
   {
      echo "
      <li class='nav-item'>
-        <a class='nav-link ' href='index.html'>
+        <a class='nav-link ' href='admin_dashboard.php'>
           <i class='bi bi-grid'></i>
           <span>Dashboard</span>
         </a>
