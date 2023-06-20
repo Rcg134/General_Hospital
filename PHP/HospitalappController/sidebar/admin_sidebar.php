@@ -4,6 +4,9 @@
 
 <?php
 
+
+ include("../PHP/HospitalappController/check_session/check_session_if_Exist.php");
+
   $usertypeid = $_SESSION['usertypeid'];
 
   if ($usertypeid == 1)

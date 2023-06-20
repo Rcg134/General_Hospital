@@ -1,3 +1,8 @@
+
+ <?php
+     include("../PHP/HospitalappController/check_session/check_session_if_Exist.php");
+  ?>
+
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
     <div class="copyright">
@@ -15,12 +20,11 @@
 
 
 
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-
+  <script src="../static/js/jquery_3.6.min.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootsrap.min.js"></script>
+  <script src="../static/js/all.min.js"></script>
+  
 
   <!-- Vendor JS Files -->
   <script src="../static/vendor/apexcharts/apexcharts.min.js"></script>
@@ -44,5 +48,6 @@
 
   <!-- Cropper -->
   <script src="../static/js/cropper.min.js"></script>
+  <!-- <script src="../static/js/set_picture.js"></script> -->
   
 </html>

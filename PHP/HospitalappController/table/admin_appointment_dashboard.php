@@ -51,7 +51,24 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
                             <i class="bi bi-check-circle"></i>
                         </button>
                     </td>
-                    <td><?php echo $row['full_name']; ?></td>
+                    <td>    
+                        <?php  
+                             $iprofile_pic = base64_encode($row['profile_pic']);
+                             $validprofile_pic = !empty($iprofile_pic) ? 'data:image/png;base64,' . $iprofile_pic : '../img/emptyprofile.png';
+                             $patientname = $row['full_name'];
+
+                              echo "<div class='row'>
+                                       <div class='col-auto'>
+                                       <img id='imagePreview'  alt='Preview| class='rounded-circle'
+                                       src={$validprofile_pic}>
+                                       </div>
+                                       <div class='col'>
+                                        {$patientname}
+                                       </div>
+                                     </div>"
+
+                        ?>
+                    </td>
                     <td><?php echo $row['message']; ?></td>
                     <td><?php echo $row['appointment_date']; ?></td>
                     <td><?php echo $timeFormat; ?></td>

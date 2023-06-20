@@ -40,7 +40,10 @@
 
                    <div class="col-md-6">
                       <label for="validationDefault05" class="form-label">Date</label>
-                      <input type="date" id="appdate" class="form-control" required>
+                      <input type="date" id="appdate" class="form-control" min=
+                          <?php $minDate = date('Y-m-d'); 
+                             echo $minDate;
+                             ?>>
                     </div>
 
                     <div class="col-md-6">

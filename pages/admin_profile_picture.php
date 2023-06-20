@@ -1,7 +1,11 @@
 <div class="card">
          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+           <!-- profile pic -->
+           <?php 
+             include("../PHP/HospitalappController/profile_pic/profile_pic_img.php");
+           ?>
 
-            <img id="imagePreview" class="mt-3 img-fluid rounded-circle" src="../img/emptyprofile.png" alt="Preview">
+
               <h2>
                 <!-- Name -->
               <?php   

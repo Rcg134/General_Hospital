@@ -1,5 +1,6 @@
-
-
+<?php
+ include("../PHP/HospitalappController/check_session/check_session_if_Exist.php");
+ ?>
               <h5 class="card-title">About</h5>
                   <p class="small fst-italic">
                     <?php  

@@ -68,7 +68,6 @@ function profileupdate(
     cache: false,
     success: function (dataResult) {
       if (dataResult == true) {
-        alert("Successfully updated");
         location.reload();
       } else {
         alert(dataResult);

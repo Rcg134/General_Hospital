@@ -10,12 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
   
   <!-- Vendor CSS Files -->
@@ -40,7 +36,11 @@
 </head>
 
 <body>
-
+  <!-- GET USER PROFILE -->
+   <?php
+     include("../PHP/set_connection.php");
+     include("../PHP/HospitalappController/admin_profile_get.php");
+   ?>
 
 
 
@@ -70,28 +70,24 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
-
-
-
+    
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
-          
+
+            <!-- profile pic -->
+            <!-- <img src="" id="headerprofpic" alt="Profile" class="rounded-circle"> -->
+            <img id="imagePreview" class="rounded-circle" 
+            src="<?php
+                $iprofile_pic = !empty($profile_pic) ? "data:image/png;base64," . $profile_pic : "../img/emptyprofile.png";
+                 echo $iprofile_pic;
+            ?>" alt="Preview">
+         
             <span class="d-none d-md-block dropdown-toggle ps-2">
                <?php 
-                session_start();
-
-                 if(empty($_SESSION["iid"])){
-                    header('location:Hospitalapp_Login.php');
-                 }
-                 else{
                    $id = $_SESSION['usertypeid'] == 2 ? "Dr " . $_SESSION['name'] :  $_SESSION['name'];
                    echo $id;
-                 }
-               
                ?>
-
             </span>
             
              <label id=usertypeid hidden>
@@ -129,12 +125,5 @@
 
   </header><!-- End Header -->
 
-<!-- GET USER PROFILE -->
-  
-  <?php
-     include("../PHP/set_connection.php");
-   ?>
-   
-   <?php
-     include("../PHP/HospitalappController/admin_profile_get.php");
-   ?>
+
+

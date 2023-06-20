@@ -44,11 +44,20 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="validationDefault03" class="form-label">Contact Number</label>
-                                            <input type="text" required onkeypress="return allowNumbersOnly(event)" class="form-control" id="profcn" 
+
+
+
+
+                                         <div class="input-group">
+                                                 <div class="input-group-prepend">
+                                                   <span class="input-group-text">(+63)</span>
+                                                 </div>
+                                                 <input type="text" required onkeypress="return allowNumbersOnly(event)" maxlength="10" class="form-control" id="profcn" 
                                                   value=<?php 
                                                         $contact = !empty($contact_number) ? $contact_number : '';
                                                         echo $contact;
                                                      ?>>
+                                               </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="validationDefault03" class="form-label">Email</label>

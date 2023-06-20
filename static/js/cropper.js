@@ -47,13 +47,15 @@
 	    	(roundedCanvas.height - canvas.height) / 2);
 
         var roundedImage = roundedCanvas.toDataURL('image/png');
+        
 
+        saveprofilepic('../PHP/HospitalappController/admin_profile_picture_insert.php', roundedImage);
         // Display cropped image preview
-        $('#imagePreview').attr('src', roundedImage);
-
+        // $('#imagePreview').attr('src', roundedImage);
+    
         // Close the modal
-        $('#cropModal').modal('hide');
-        alert(roundedImage)
+        // $('#cropModal').modal('hide');
+           
       });
 
       
@@ -66,7 +68,48 @@
           $image.attr('src', event.target.result);
           $('#cropModal').modal('show');
         };
-        // read data image from on change
+
         reader.readAsDataURL(file);
       });
     });
+
+
+
+
+
+
+
+
+
+
+    function saveprofilepic(PHP,image){
+      var form_data = new FormData();
+    
+      form_data.append("Image", image);
+    
+         
+             $.ajax({
+              url: PHP,
+              type: "POST",
+              data: form_data,
+              contentType: false,
+              processData: false,
+              cache: false,
+              success: function(dataResult){
+                  
+                   if(dataResult == true){
+                    location.reload();
+                   }
+                   else{
+                      alert(dataResult);
+                   }
+                       
+              },
+              error: function (xhr, ajaxOptions, thrownError){
+                   $("#userrolemodal").modal('hide');
+                  alert(thrownError);
+                 } 
+                   
+         });
+    
+    }
