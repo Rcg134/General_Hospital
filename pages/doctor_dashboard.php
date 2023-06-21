@@ -67,6 +67,55 @@
   </main>
   <!-- End #main -->
 
+
+
+
+
+
+
+           <!-- Vertically centered Modal -->
+           <div class="modal fade" id="assignmodal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Assign Time</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <div class="row">
+                        <div class="col-md-12">
+                         <label id='lblpatientid' hidden></label>
+                          <!-- # SELECT-->
+
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <label for="assigntime" class="form-label">Time Start</label>
+                                  <input type="time" class="form-control"  id="assigntimestart" required>
+                             </div>
+
+
+                             <div class="col-md-6">
+                                  <label for="assigntime" class="form-label">Time End</label>
+                                  <input type="time" class="form-control" id="assigntimeend" required>
+                             </div>
+                         </div> 
+                         
+                         
+                        </div>
+                      </div>
+    
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" id="submitappointmentupdate"  >Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- End Vertically centered Modal-->
+
+
   
 
   
@@ -75,4 +124,5 @@
 ?>
 
 <script src="../static/js/doctor_calendar_dashboard.js"></script> 
+<script src="../static/js/doctor_list_appointment_dashboard.js"></script> 
 

@@ -1,7 +1,6 @@
 function getcolumn(button) {
-    var row = button.parentNode.parentNode; 
-    var idcol = row.cells[0].textContent; 
-    $("#lblcolumnid").text(idcol)
+     var firstTdText = button.closest('tr').querySelector('td:first-child').innerText;
+     $("#lblcolumnid").text(firstTdText)
   }
   
   
@@ -14,11 +13,6 @@ function getcolumn(button) {
   }
   
   
-
-
-
-
-
   function setusertype(PHP,colid,selectid){
     var form_data = new FormData();
   

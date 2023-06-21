@@ -46,15 +46,35 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
         <tbody>
             <?php foreach ($currentPageData as $row): ?>
                 <tr>
-                     <td hidden><?php echo $row['id']; ?></td>
-                    <td>
+                 <td hidden><?php echo $row['id']; ?></td>
+                    <td class="text-wrap">
+                      <div class="fixed-cell-width">  
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#userrolemodal" onclick="getcolumn(this)">
                             <i class="bi bi-check-circle"></i>
                         </button>
+                      </div>
                     </td>
-                    <td><?php echo $row['firstname']; ?></td>
-                    <td><?php echo $row['lastname']; ?></td>
-                    <td><?php echo $row['idate']; ?></td>
+
+                    <td class="text-wrap">
+                      <div class="fixed-cell-width">  
+                        <?php echo $row['firstname']; ?>
+                      </div>
+                    </td>
+
+
+                    <td class="text-wrap">
+                      <div class="fixed-cell-width">  
+                        <?php echo $row['lastname']; ?>
+                      </div>
+                    </td>
+
+
+                    <td class="text-wrap">
+                      <div class="fixed-cell-width">  
+                        <?php echo $row['idate']; ?>
+                      </div>
+                    </td>
+
                 </tr>
             <?php endforeach; ?>
         </tbody>

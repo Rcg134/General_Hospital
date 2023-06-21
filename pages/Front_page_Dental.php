@@ -68,7 +68,7 @@
                                           $status = "<a class='dropdown-item' href='patient_dashboard.php'>Panel</a>";
                                         }
                                         // admin   
-                                        else{
+                                        else if ($usertype == 1){
                                           $status =  "<a class='dropdown-item' href='admin_dashboard.php'>Panel</a>";
                                         }
 

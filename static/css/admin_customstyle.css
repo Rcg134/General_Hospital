@@ -51,3 +51,8 @@
     max-width: 50px;
     max-height: 50px; 
   }
+
+
+  .fixed-cell-width {
+    width: 150px;
+}

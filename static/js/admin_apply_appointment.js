@@ -33,7 +33,7 @@ function sendappoitnment(PHP, appdate, apptime, selectdoctorid, appmessage) {
     cache: false,
     success: function (dataResult) {
       if (dataResult == true) {
-        alert("Successfully updated");
+        alert("Appointment has been send , Waiting for approval");
         location.reload();
       } else if (dataResult == false) {
         alert(

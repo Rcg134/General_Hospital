@@ -33,25 +33,57 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
             <tr>
                 <th hidden>id</th>
                 <th>Action</th>
+                <th>Status</th>
                 <th>Full Name</th>
                 <th>Message</th>
                 <th>Appointment Date</th>
-                <th>Appointment Time</th>
+                <th hidden>Time Start real value</th>
+                <th>Time Start</th>
+                <th>Time End</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($currentPageData as $row): 
-                  $timestamp = strtotime($row['appointment_time']);
-                  $timeFormat = date('h:i A', $timestamp);
+                  $origtimefrom = $row['appointment_time'];
+                  $origtimeto = $row['appointment_time_end'];
+                  $timeFormatFrom = "";
+                  $timeFormatEnd = "";
+
+                 if(!empty($origtimefrom))
+                 {
+                  $timestamp = strtotime($origtimefrom);
+                  $timeFormatFrom = date('h:i A', $timestamp);
+                 }
+
+                if (!empty($origtimeto)){
+                  $timeend = strtotime($origtimeto);
+                  $timeFormatEnd = date('h:i A', $timeend);
+                }
+            
                 ?>
                 <tr>
                      <td hidden><?php echo $row['id']; ?></td>
-                    <td>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#userrolemodal" onclick="getcolumn(this)">
+                    <td class="text-wrap">
+                      <div class="fixed-cell-width">  
+                        <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Approve" id="btnapp">
                             <i class="bi bi-check-circle"></i>
                         </button>
+                        <button type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Disapprove" id="btndis" class="btn btn-danger">
+                            <i class="bi bi-exclamation-octagon"></i>
+                        </button>
+                      </div>
                     </td>
-                    <td>    
+
+                    
+                    <td class="text-wrap">
+                      <span class="badge rounded-pill <?php echo $row['class']; ?> text-dark">
+                        <?php echo $row['istatus'] ?>
+                      </span>
+                    </td>
+                    
+
+                    <td class="text-wrap">   
+                        <div class="fixed-cell-width">  
                         <?php  
                              $iprofile_pic = base64_encode($row['profile_pic']);
                              $validprofile_pic = !empty($iprofile_pic) ? 'data:image/png;base64,' . $iprofile_pic : '../img/emptyprofile.png';
@@ -68,10 +100,38 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
                                      </div>"
 
                         ?>
+                         </div>
                     </td>
-                    <td><?php echo $row['message']; ?></td>
-                    <td><?php echo $row['appointment_date']; ?></td>
-                    <td><?php echo $timeFormat; ?></td>
+
+                    <td class="text-wrap"> 
+                        <div class="fixed-cell-width">  
+                            <?php echo $row['message']; ?> 
+                        </div>
+                    </td>
+
+                    <td class="text-wrap">
+                      <div class="fixed-cell-width">  
+                        <?php echo $row['appointment_date']; ?>
+                      </div>
+                    </td>
+                    
+                    <td hidden>
+                       <?php echo $origtimefrom; ?>
+                    </td>
+
+                    <td class="text-wrap">
+                      <div class="fixed-cell-width">  
+                        <?php echo $timeFormatFrom; ?>
+                      </div>
+                    </td>
+
+                    <td class="text-wrap">
+                      <div class="fixed-cell-width">  
+                        <?php echo $timeFormatEnd; ?>
+                      </div>
+                    </td>
+
+
                 </tr>
             <?php endforeach; ?>
         </tbody>
