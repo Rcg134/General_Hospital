@@ -1,0 +1,6 @@
+{
+  "name": "your-vendor/general-hospital",
+  "require": {
+    "twilio/sdk": "^7.4"
+  }
+}

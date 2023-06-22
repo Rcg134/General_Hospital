@@ -44,6 +44,7 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
         </thead>
         <tbody>
             <?php foreach ($currentPageData as $row): 
+                  $currentstat = $row['istatus'];
                   $origtimefrom = $row['appointment_time'];
                   $origtimeto = $row['appointment_time_end'];
                   $timeFormatFrom = "";
@@ -64,20 +65,24 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
                 <tr>
                      <td hidden><?php echo $row['id']; ?></td>
                     <td class="text-wrap">
-                      <div class="fixed-cell-width">  
-                        <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Approve" id="btnapp">
-                            <i class="bi bi-check-circle"></i>
-                        </button>
-                        <button type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Disapprove" id="btndis" class="btn btn-danger">
-                            <i class="bi bi-exclamation-octagon"></i>
-                        </button>
-                      </div>
+
+                      <?php if ($currentstat != "Approved") { ?>
+                         <div class="fixed-cell-width">  
+                           <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Approve" id="btnapp">
+                               <i class="bi bi-check-circle"></i>
+                           </button>
+                           <button type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Disapprove" id="btndis" class="btn btn-danger">
+                               <i class="bi bi-exclamation-octagon"></i>
+                           </button>
+                         </div>
+                      <?php }; ?>
+                      
                     </td>
 
                     
                     <td class="text-wrap">
                       <span class="badge rounded-pill <?php echo $row['class']; ?> text-dark">
-                        <?php echo $row['istatus'] ?>
+                        <?php echo $currentstat ?>
                       </span>
                     </td>
                     
