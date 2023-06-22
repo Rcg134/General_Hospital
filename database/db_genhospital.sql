@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2023 at 11:58 AM
+-- Generation Time: Jun 22, 2023 at 02:20 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -231,11 +231,11 @@ CREATE TABLE `tbl_appointment` (
 --
 
 INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `appointment_time_end`, `patient_id`, `doctor_id`, `message`, `idate`, `status_id`, `active`) VALUES
-(26, '2023-06-21', '07:04:00', '23:04:00', 22, 20, 'sample', '2023-06-21 08:01:11', 4, 1),
-(27, '2023-06-21', '14:04:00', '17:04:00', 21, 20, 'I need to consult', '2023-06-21 14:20:34', 3, 1),
-(28, '2023-06-21', '17:00:00', NULL, 21, 20, 'neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', '2023-06-21 10:41:38', 3, 1),
-(29, '2023-06-21', '19:06:00', NULL, 21, 20, 'daweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', '2023-06-21 10:42:54', 3, 1),
-(30, '2023-06-21', '21:04:00', NULL, 25, 20, 'dsadasasdaddsaawewqedxawq', '2023-06-21 13:49:21', 3, 1);
+(26, '2023-06-22', '06:04:00', '08:02:00', 22, 20, 'sample', '2023-06-21 08:01:11', 4, 1),
+(27, '2023-06-22', '10:04:00', '12:00:00', 21, 20, 'I need to consult', '2023-06-21 14:20:34', 4, 1),
+(28, '2023-06-22', '17:00:00', '00:00:00', 21, 20, 'neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', '2023-06-21 10:41:38', 4, 1),
+(29, '2023-06-22', '19:06:00', NULL, 21, 20, 'daweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', '2023-06-21 10:42:54', 3, 1),
+(30, '2023-06-22', '21:04:00', NULL, 25, 20, 'dsadasasdaddsaawewqedxawq', '2023-06-21 13:49:21', 3, 1);
 
 -- --------------------------------------------------------
 
