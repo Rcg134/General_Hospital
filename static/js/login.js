@@ -10,7 +10,7 @@ function submitLoginForm(event) {
     var password = $("#logpass").val();
     
     if (username.trim() === '' || password.trim() === '') {
-      alert("Please enter both email and password.");
+      showerror("Please enter both email and password.");
       $("#login-form").show();
       $("#loading").hide();
     }
@@ -33,12 +33,12 @@ function submitLoginForm(event) {
     var confirmPassword = $("#confirm-password").val();
     
     if (username.trim() === '' || password.trim() === '' || confirmPassword.trim() === '' || firstname.trim() === '' || lastname.trim() === '') {
-      alert("Please fill in all the required fields.");
+      showerror("Please fill in all the required fields.");
       $("#signup-form").show();
       $("#loading").hide();
     }    
     else if (password !== confirmPassword) {
-      alert("Passwords do not match.");
+      showerror("Passwords do not match.");
       $("#signup-form").show();
       $("#loading").hide();
     }
@@ -58,13 +58,12 @@ function submitLoginForm(event) {
     var email = $("#email").val();
     
     if (email.trim() === '') {
-      alert("Please enter your email.");
+      showerror("Please enter your email.");
       return;
     }
     
     // Perform forgot password process here
-    
-    alert("Password reset link sent to your email.");
+    showerror("Password reset link sent to your email.");
     $("#forgot-password-form").hide();
     $("#login-form").show();
   }
@@ -114,15 +113,14 @@ function AuthUser(PHP,username,password){
                    location.href = "Front_page_Dental.php"
                  }
                  else{
-                    alert('Wrong Credentials');
+                    showerror('Wrong Credentials');
                     $("#login-form").show();
                     $("#loading").hide();
                  }
                      
             },
             error: function (xhr, ajaxOptions, thrownError){
-              
-                alert(thrownError);
+                showerror(thrownError);
                } 
                  
        });

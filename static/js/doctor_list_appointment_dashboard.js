@@ -7,17 +7,15 @@ $(document).on('click', '#btnapp', function () {
     var timestart = $(this).closest("tr").find('td:eq(6)').text().trim();
 
 
-    $("#assignmodal").modal("show");
-    $("#lblpatientid").text(patientid)
-    $("#assigntimestart").val(timestart)
-  
-
+      $("#assignmodal").modal("show");
+      $("#lblpatientid").text(patientid)
+      $("#assigntimestart").val(timestart)
     });
 
 
 
 $(document).on('click', '#btndis', function () {
-    alert('Dis!');
+    showerror('Dis!')
   });
 
 
@@ -26,11 +24,18 @@ $(document).on('click', '#btndis', function () {
     var patientid = $("#lblpatientid").text();
     var timestart = $("#assigntimestart").val();
     var status = 4;
-      timeset("../PHP/HospitalappController/doctor_dashboard_time_update.php",
-           patientid,
-           timestart, 
-           timeend,
-           status);
+
+    if (timestart !== "" && timeend !== ""  ){
+        timeset("../PHP/HospitalappController/doctor_dashboard_time_update.php",
+        patientid,
+        timestart, 
+        timeend,
+        status);
+    }
+    else{
+      showerror("Fill up all neccesary fields")
+    }
+
 
   });
 
@@ -60,7 +65,7 @@ $(document).on('click', '#btndis', function () {
         }
       },
       error: function (xhr, ajaxOptions, thrownError) {
-        alert(thrownError);
+        showerror(thrownError)
       },
     });
   }

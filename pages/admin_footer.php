@@ -49,5 +49,8 @@
   <!-- Cropper -->
   <script src="../static/js/cropper.min.js"></script>
   <!-- <script src="../static/js/set_picture.js"></script> -->
+
+  <script src="../static/js/alertError.js"></script>
   
+
 </html>

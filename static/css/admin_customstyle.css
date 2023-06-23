@@ -56,3 +56,33 @@
   .fixed-cell-width {
     width: 150px;
 }
+
+
+
+.alert {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.closebtn {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+

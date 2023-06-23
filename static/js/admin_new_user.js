@@ -33,13 +33,13 @@ function getcolumn(button) {
                    location.reload();
                  }
                  else{
-                    alert(dataResult);
+                    showerror(dataResult)
                  }
                      
             },
             error: function (xhr, ajaxOptions, thrownError){
                  $("#userrolemodal").modal('hide');
-                alert(thrownError);
+                showerror(thrownError)
                } 
                  
        });

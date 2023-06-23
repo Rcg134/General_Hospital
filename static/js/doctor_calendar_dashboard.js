@@ -43,8 +43,7 @@ function getcalendarsched(PHP){
             icalendar(eventData);
           },
           error: function (xhr, ajaxOptions, thrownError){
-            
-              alert(thrownError);
+            showerror(thrownError);
              } 
                
      });

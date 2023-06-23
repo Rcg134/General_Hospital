@@ -36,16 +36,14 @@ function sendappoitnment(PHP, appdate, apptime, selectdoctorid, appmessage) {
         alert("Appointment has been send , Waiting for approval");
         location.reload();
       } else if (dataResult == false) {
-        alert(
-          "Your selected doctor has been reached its maximum patients per day"
-        );
+        showerror("Your selected doctor has been reached its maximum patients per day")
         return;
       } else {
-        alert(dataResult);
+        showerror(dataResult)
       }
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      alert(thrownError);
+      showerror(thrownError)
     },
   });
 }

@@ -15,7 +15,7 @@ $("#profileform").submit(function (event) {
   var valuepatient = $("#profvalueday").val();
 
   if (specialized == 0) {
-    alert("input all fields");
+    showerror("Input all fields");
     return;
   }
 
@@ -70,11 +70,11 @@ function profileupdate(
       if (dataResult == true) {
         location.reload();
       } else {
-        alert(dataResult);
+        showerror(dataResult);
       }
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      alert(thrownError);
+      showerror(thrownError);
     },
   });
 }

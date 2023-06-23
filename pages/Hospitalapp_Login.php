@@ -83,8 +83,18 @@
     </div>
   </div>
 
+
+ <!--  error message -->
+  <div id="alert" class="alert" style="display: none;">
+    <!-- <span class="closebtn">&times;</span> -->
+   <strong id="errormsg"></strong>
+  </div>
+
   <script src="../static/js/jquery.min.js"></script>
   <script src="../static/js/login.js"></script>
+  <script src="../static/js/alertError.js"></script>
+
+  
 </body>
 
 </html>

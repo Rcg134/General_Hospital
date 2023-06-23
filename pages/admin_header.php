@@ -123,6 +123,13 @@
       </ul>
     </nav><!-- End Icons Navigation -->
 
+
+    <!--  error message -->
+   <div id="alert" class="alert" style="display: none;">
+    <!-- <span class="closebtn">&times;</span> -->
+   <strong id="errormsg"></strong>
+  </div>
+
   </header><!-- End Header -->
 
 
