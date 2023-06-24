@@ -39,7 +39,7 @@
                 <a class="nav-link" href="#home" onclick="animateSection('#home')">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#about-us" onclick="animateSection('#about')">About</a>
+                <a class="nav-link" href="#about" onclick="animateSection('#about')">About</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#services" onclick="animateSection('#services')">Services</a>
@@ -103,7 +103,7 @@
       </div>
     </section>
 
-    <section id="about-us" class="py-5">
+    <section id="about" class="py-5">
       <div class="container">
         <h2>About Us</h2>
         <p>
@@ -127,71 +127,84 @@
 
 
 
-<section id="services" class="py-5">
-  <div class="container">
-    <h2>Our Services</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <h3>General Hospital Services</h3>
-        <p>
-          Take advantage of our comprehensive range of general hospital services, including medical exams, treatments, surgeries, and more.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h3>Vaccinations</h3>
-        <p>
-          Protect yourself and your loved ones with our vaccination services, including routine immunizations and specific vaccines for various diseases.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h3>Cosmetic Procedures</h3>
-        <p>
-          Enhance your appearance with our cosmetic procedures, such as plastic surgery, Botox, and dermal fillers.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h3>Orthopedics</h3>
-        <p>
-          Restore your musculoskeletal health with our orthopedic treatments, including joint replacements, sports medicine, and rehabilitation.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h3>Emergency Medical Care</h3>
-        <p>
-          We provide immediate and responsive emergency medical care for critical situations. Contact us immediately for urgent medical assistance.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h3>Pediatrics</h3>
-        <p>
-          Ensure the health and well-being of your children with our specialized pediatric services, including check-ups, vaccinations, and pediatric consultations.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h3>Obstetrics and Gynecology</h3>
-        <p>
-          Receive personalized care for women's health needs, including prenatal care, gynecological exams, family planning, and reproductive health services.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h3>Cardiology</h3>
-        <p>
-          Take care of your heart health with our cardiology services, including cardiac evaluations, diagnostic tests, and treatment for heart conditions.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h3>Oncology</h3>
-        <p>
-          Access comprehensive cancer care, including screenings, diagnostics, chemotherapy, radiation therapy, and supportive services for cancer patients.
-        </p>
+    <section id="services" class="py-5">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>General Hospital Services</h3>
+          <p>
+            Take advantage of our comprehensive range of general hospital services, including medical exams, treatments, surgeries, and more.
+          </p>
+          <img src="../img/teeth-login.png" alt="General Hospital Services" class="animated-image img-height" onclick="showImage('../img/teeth-login.png')">
+        </div>
+        <div class="col-md-6">
+          <h3>Vaccinations</h3>
+          <p>
+            Protect yourself and your loved ones with our vaccination services, including routine immunizations and specific vaccines for various diseases.
+          </p>
+          <img src="../img/doctor-login.png" alt="Vaccinations" class="animated-image img-height" onclick="showImage('../img/doctor-login.png')">
+        </div>
+        <div class="col-md-6">
+          <h3>Cosmetic Procedures</h3>
+          <p>
+            Enhance your appearance with our cosmetic procedures, such as plastic surgery, Botox, and dermal fillers.
+          </p>
+          <img src="../img/teeth-login.png" alt="General Hospital Services" class="animated-image img-height" onclick="showImage('../img/teeth-login.png')">
+        </div>
+        <div class="col-md-6">
+          <h3>Orthopedics</h3>
+          <p>
+            Restore your musculoskeletal health with our orthopedic treatments, including joint replacements, sports medicine, and rehabilitation.
+          </p>
+          <img src="../img/teeth-login.png" alt="General Hospital Services" class="animated-image img-height" onclick="showImage('../img/teeth-login.png')">
+        </div>
+        <div class="col-md-6">
+          <h3>Emergency Medical Care</h3>
+          <p>
+            We provide immediate and responsive emergency medical care for critical situations. Contact us immediately for urgent medical assistance.
+          </p>
+          <img src="../img/teeth-login.png" alt="General Hospital Services" class="animated-image img-height" onclick="showImage('../img/teeth-login.png')">
+        </div>
+        <div class="col-md-6">
+          <h3>Pediatrics</h3>
+          <p>
+            Ensure the health and well-being of your children with our specialized pediatric services, including check-ups, vaccinations, and pediatric consultations.
+          </p>
+          <img src="../img/teeth-login.png" alt="General Hospital Services" class="animated-image img-height" onclick="showImage('../img/teeth-login.png')">
+        </div>
+        <div class="col-md-6">
+          <h3>Obstetrics and Gynecology</h3>
+          <p>
+            Receive personalized care for women's health needs, including prenatal care, gynecological exams, family planning, and reproductive health services.
+          </p>
+          <img src="../img/teeth-login.png" alt="General Hospital Services" class="animated-image img-height" onclick="showImage('../img/teeth-login.png')">
+        </div>
+        <div class="col-md-6">
+          <h3>Cardiology</h3>
+          <p>
+            Take care of your heart health with our cardiology services, including cardiac evaluations, diagnostic tests, and treatment for heart conditions.
+          </p>
+          <img src="../img/teeth-login.png" alt="General Hospital Services" class="animated-image img-height" onclick="showImage('../img/teeth-login.png')">
+        </div>
+        <div class="col-md-6">
+          <h3>Oncology</h3>
+          <p>
+            Access comprehensive cancer care, including screenings, diagnostics, chemotherapy, radiation therapy, and supportive services for cancer patients.
+          </p>
+          <img src="../img/teeth-login.png" alt="General Hospital Services" class="animated-image img-height" onclick="showImage('../img/teeth-login.png')">
+        </div>
       </div>
     </div>
+  </section>
+
+  <div id="zoomed-image-overlay" style="display: none;" class="zoomed-image" onclick="hideImage()">
+    <img id="zoomed-image" src="" alt="Zoomed Image">
   </div>
-</section>
 
 
 <section id="doctors" class="py-5">
-  <div class="container">
+  <div class="container background">
     <h2>Our Doctors</h2>
     <div id="doctor-carousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -358,9 +371,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script> -->
     <script src="../static/js/custom.js"></script>
-
-
-
+    <script>
+  $(document).ready(function() {
+    $('.carousel').carousel({
+      interval: 3000, // Adjust the interval as per your preference (in milliseconds)
+    });
+  });
+</script>
 
   </body>
 </html>

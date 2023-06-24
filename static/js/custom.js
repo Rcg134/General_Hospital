@@ -64,3 +64,15 @@ window.addEventListener("scroll", function () {
     scrollButton.classList.remove("show");
   }
 });
+
+
+function showImage(src) {
+  document.getElementById('zoomed-image-overlay').style.display = 'block';
+  var zoomedImage = document.getElementById('zoomed-image');
+  zoomedImage.src = src;
+  document.getElementById('zoomed-image-overlay').style.display = 'flex';
+}
+
+function hideImage() {
+  document.getElementById('zoomed-image-overlay').style.display = 'none';
+}
