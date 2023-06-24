@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2023 at 02:20 PM
+-- Generation Time: Jun 24, 2023 at 07:53 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -56,6 +56,11 @@ WHERE A.doctor_id = iid
       A.appointment_date = CURDATE()
 ORDER BY A.appointment_date ASC,
          A.appointment_time ASC$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `appointment_patient_disapprove` (IN `iid` INT, IN `remarks` VARCHAR(255))   UPDATE tbl_appointment
+SET   status_id = 5,
+     remarks_dissapprove = remarks
+WHERE id = iid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `appointment_patient_update` (IN `iid` INT, IN `timefrom` TIME, IN `timeto` TIME, IN `istatus` INT)   UPDATE tbl_appointment
 SET appointment_time=timefrom,
@@ -221,6 +226,7 @@ CREATE TABLE `tbl_appointment` (
   `patient_id` int(11) NOT NULL,
   `doctor_id` int(11) NOT NULL,
   `message` varchar(255) NOT NULL,
+  `remarks_dissapprove` varchar(255) DEFAULT NULL,
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `status_id` int(11) NOT NULL DEFAULT 3,
   `active` tinyint(1) NOT NULL DEFAULT 1
@@ -230,12 +236,12 @@ CREATE TABLE `tbl_appointment` (
 -- Dumping data for table `tbl_appointment`
 --
 
-INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `appointment_time_end`, `patient_id`, `doctor_id`, `message`, `idate`, `status_id`, `active`) VALUES
-(26, '2023-06-22', '06:04:00', '08:02:00', 22, 20, 'sample', '2023-06-21 08:01:11', 4, 1),
-(27, '2023-06-22', '10:04:00', '12:00:00', 21, 20, 'I need to consult', '2023-06-21 14:20:34', 4, 1),
-(28, '2023-06-22', '17:00:00', '00:00:00', 21, 20, 'neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', '2023-06-21 10:41:38', 4, 1),
-(29, '2023-06-22', '19:06:00', NULL, 21, 20, 'daweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', '2023-06-21 10:42:54', 3, 1),
-(30, '2023-06-22', '21:04:00', NULL, 25, 20, 'dsadasasdaddsaawewqedxawq', '2023-06-21 13:49:21', 3, 1);
+INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `appointment_time_end`, `patient_id`, `doctor_id`, `message`, `remarks_dissapprove`, `idate`, `status_id`, `active`) VALUES
+(26, '2023-06-24', '06:04:00', NULL, 22, 20, 'sample', 'Dis Ds Dis Ds Dis Ds', '2023-06-21 08:01:11', 5, 1),
+(27, '2023-06-24', '10:04:00', NULL, 21, 20, 'I need to consult', NULL, '2023-06-21 14:20:34', 3, 1),
+(28, '2023-06-24', '17:00:00', NULL, 21, 20, 'neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', NULL, '2023-06-21 10:41:38', 3, 1),
+(29, '2023-06-24', '19:06:00', NULL, 21, 20, 'daweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', NULL, '2023-06-21 10:42:54', 3, 1),
+(30, '2023-06-24', '21:04:00', NULL, 25, 20, 'dsadasasdaddsaawewqedxawq', NULL, '2023-06-21 13:49:21', 3, 1);
 
 -- --------------------------------------------------------
 

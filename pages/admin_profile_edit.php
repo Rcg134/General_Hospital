@@ -71,6 +71,9 @@
                                         <div class="col-md-6">
                                             <label for="validationDefault05" class="form-label">Birth date</label>
                                             <input type="date" required id="profbdate" class="form-control" 
+                                                max = <?php $minDate = date('Y-m-d'); 
+                                                      echo $minDate;
+                                                     ?>
                                                  value=<?php 
                                                           $ibrithdate = !empty($birthdate) ? $birthdate : '';
                                                           echo $ibrithdate;

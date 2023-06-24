@@ -73,7 +73,7 @@
 
 
 
-           <!-- Vertically centered Modal -->
+           <!-- Vertically centered Modal Approve-->
            <div class="modal fade" id="assignmodal" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
@@ -109,6 +109,44 @@
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                       <button type="button" class="btn btn-primary" id="submitappointmentupdate"  >Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- End Vertically centered Modal-->
+
+
+
+
+               <!-- Vertically centered Modal Approve-->
+           <div class="modal fade" id="dismodal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Disapprove</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <div class="row">
+                        <div class="col-md-12">
+                         <label id='lblpatientiddis' hidden></label>
+                          <!-- # SELECT-->
+                          <div class="col-md-12">
+
+                              <label for="validationDefault05" class="form-label">Reason</label>
+                              <textarea class="form-control" placeholder="Reason to disapprove" id="remarksdisaprove" required></textarea>
+                          
+                          </div>
+
+                         
+                        </div>
+                      </div>
+    
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-danger" id="submitappointmentupdatedisapprove"  >Disapprove</button>
                     </div>
                   </div>
                 </div>

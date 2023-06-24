@@ -66,7 +66,7 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
                      <td hidden><?php echo $row['id']; ?></td>
                     <td class="text-wrap">
 
-                      <?php if ($currentstat != "Approved") { ?>
+                      <?php if ($currentstat != "Approved" && $currentstat != "Disapproved") { ?>
                          <div class="fixed-cell-width">  
                            <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Approve" id="btnapp">
                                <i class="bi bi-check-circle"></i>

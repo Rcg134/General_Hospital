@@ -15,18 +15,23 @@ $(document).on('click', '#btnapp', function () {
 
 
 $(document).on('click', '#btndis', function () {
-    showerror('Dis!')
+     var patientid = $(this).closest("tr").find('td:eq(0)').text();
+     $("#lblpatientiddis").text(patientid)
+    $("#dismodal").modal("show");   
   });
 
 
+
+
+// APPROVE
   $('#submitappointmentupdate').click(function() {
     var timeend = $("#assigntimeend").val();
     var patientid = $("#lblpatientid").text();
     var timestart = $("#assigntimestart").val();
     var status = 4;
 
-    if (timestart !== "" && timeend !== ""  ){
-        timeset("../PHP/HospitalappController/doctor_dashboard_time_update.php",
+    if  (timestart !== "" && timeend !== ""  ){
+        timesetapprove("../PHP/HospitalappController/doctor_dashboard_time_approve.php",
         patientid,
         timestart, 
         timeend,
@@ -40,9 +45,27 @@ $(document).on('click', '#btndis', function () {
   });
 
 
+// DISAPPROVE
+  $('#submitappointmentupdatedisapprove').click(function() {
+  var patientid = $("#lblpatientiddis").text();
+  var remarks = $("#remarksdisaprove").val();
+
+  if (remarks !== "" ){
+      timesetdisapprove("../PHP/HospitalappController/doctor_dashboard_time_disapprove.php",
+      patientid,
+      remarks);
+  }
+  else{
+    showerror("Fill up all neccesary fields")
+  }
 
 
-  function timeset(PHP, patientid, timestart,timeend,status) {
+});
+
+
+
+
+  function timesetapprove(PHP, patientid, timestart,timeend,status) {
     var form_data = new FormData();
   
     form_data.append("Patientid", patientid);
@@ -69,4 +92,35 @@ $(document).on('click', '#btndis', function () {
       },
     });
   }
+
+
+
+  
+  function timesetdisapprove(PHP, patientid,remarks) {
+    var form_data = new FormData();
+  
+    form_data.append("Patientid", patientid);
+    form_data.append("Remarks", remarks);
+
+  
+    $.ajax({
+      url: PHP,
+      type: "POST",
+      data: form_data,
+      contentType: false,
+      processData: false,
+      cache: false,
+      success: function (dataResult) {
+        if (dataResult == true) {
+           location.reload();
+        } else {
+          alert(dataResult);
+        }
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        showerror(thrownError)
+      },
+    });
+  }
+  
   
