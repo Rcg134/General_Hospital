@@ -3,6 +3,10 @@
 
 <head>
   <title>Dentist Website - Login</title>
+
+
+  <link href="../img/doctor-login.png" rel="icon">
+  <link href="../img/doctor-login.png" rel="apple-touch-icon">
   <link rel="stylesheet" href="../static/css/bootsrap.css">
   <link rel="stylesheet" href="../static/css/login.css">
 </head>

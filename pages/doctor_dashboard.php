@@ -16,7 +16,45 @@
     <div class="pagetitle">
       <h1>Doctor Dashboard</h1>
     </div><!-- End Page Title -->
-  
+
+           
+    <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Approved Patients</h5>
+            <div class="row">
+              <div class="col-md-3">
+                 <i class="fas fa-check-circle fa-3x blue-icon"></i>
+                 </div>
+                 <div class="col-md-6">
+                 <h2 class="card-text" id="approvedCount">25</h2>
+                 </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+     <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Disapproved Patients</h5>
+            <div class="row">
+              <div class="col-md-3">
+              <i class="fas fa-times-circle fa-3x red-icon"></i>
+                 </div>
+                 <div class="col-md-6">
+                 <h2 class="card-text" id="approvedCount">25</h2>
+                 </div>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
 
   <!-- # Calendar -->
     <section class="section dashboard">

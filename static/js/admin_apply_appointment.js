@@ -33,7 +33,7 @@ function sendappoitnment(PHP, appdate, apptime, selectdoctorid, appmessage) {
     cache: false,
     success: function (dataResult) {
       if (dataResult == true) {
-        alert("Appointment has been send , Waiting for approval");
+        showsuccess("Appointment has been send , Waiting for approval")
         location.reload();
       } else if (dataResult == false) {
         showerror("Your selected doctor has been reached its maximum patients per day")

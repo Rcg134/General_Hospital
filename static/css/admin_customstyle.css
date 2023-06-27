@@ -59,6 +59,17 @@
 
 
 
+.successful {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 20px;
+  background-color: #3682f4;
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
 .alert {
   position: fixed;
   bottom: 20px;
@@ -86,3 +97,11 @@
   color: black;
 }
 
+
+
+.blue-icon {
+  color: blue;
+}
+.red-icon {
+  color: red;
+}

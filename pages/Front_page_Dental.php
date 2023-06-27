@@ -8,6 +8,9 @@
       rel="stylesheet"
       href="../static/css/bootsrap.css"
     />
+
+    <link href="../img/doctor-login.png" rel="icon">
+   <link href="../img/doctor-login.png" rel="apple-touch-icon">
     <link rel="stylesheet" href="../static/css/bootsrap.min.css">
     <link rel="stylesheet" href="../static/css/customstyle.css">
 

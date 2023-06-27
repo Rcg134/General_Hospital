@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <!-- <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <link href="../img/doctor-login.png" rel="icon">
+  <link href="../img/doctor-login.png" rel="apple-touch-icon">
 
   
   <!-- Vendor CSS Files -->
@@ -125,10 +125,16 @@
 
 
     <!--  error message -->
-   <div id="alert" class="alert" style="display: none;">
-    <!-- <span class="closebtn">&times;</span> -->
+  <div id="alert" class="alert" style="display: none;">
    <strong id="errormsg"></strong>
   </div>
+
+
+    <!--  success message -->
+  <div id="success" class="successful" style="display: none;">
+   <strong id="successmessage"></strong>
+  </div>
+  
 
   </header><!-- End Header -->
 
