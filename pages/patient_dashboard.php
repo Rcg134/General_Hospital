@@ -9,6 +9,10 @@
   include("admin_sidebar.php");
 ?>
 
+      
+<?php
+  include("../PHP/HospitalappController/patient_dashboard_personal_details_count.php");
+?>
 
 
   <main id="main" class="main">
@@ -16,35 +20,19 @@
     <div class="pagetitle">
       <h1>Patient Dashboard</h1>
     </div><!-- End Page Title -->
-      
+
     <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Number of Consultations</h5>
+            <h5 class="card-title">Number of appointments</h5>
             <div class="row">
-              <div class="col-md-3">
-                 <i class="fas fa-user fa-3x blue-icon"></i>
+              <div class="col-md-6">
+                 <i class="fas fa-file fa-3x blue-icon"></i>
                  </div>
                  <div class="col-md-6">
-                 <h2 class="card-text" id="approvedCount">20</h2>
-                 </div>
-              </div>
-          </div>
-        </div>
-      </div>
-
-     <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Appointments</h5>
-            <div class="row">
-              <div class="col-md-3">
-              <i class="fas fa-file-alt fa-3x blue-icon"></i>
-                 </div>
-                 <div class="col-md-6">
-                 <h2 class="card-text" id="approvedCount">1</h2>
+                 <h2 class="card-text"><?php echo $appointments ?></h2>
                  </div>
               </div>
           </div>

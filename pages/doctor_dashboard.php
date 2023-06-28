@@ -9,6 +9,9 @@
   include("admin_sidebar.php");
 ?>
 
+<?php
+  include("../PHP/HospitalappController/doctor_dashboard_patient_details_count.php");
+?>
 
 
   <main id="main" class="main">
@@ -17,7 +20,27 @@
       <h1>Doctor Dashboard</h1>
     </div><!-- End Page Title -->
 
-           
+   <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Pending Patients</h5>
+            <div class="row">
+              <div class="col-md-6 ">
+                <i class="fas fa-hourglass fa-3x yellow-icon"></i>
+                 </div>
+                 <div class="col-md-6">
+                   <h2 class="card-text"><?php echo $pending; ?></h2>
+                 </div>
+              </div>
+          </div>
+        </div>
+      </div>
+     </div>    
+  </div>      
+
+
     <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -29,7 +52,7 @@
                  <i class="fas fa-check-circle fa-3x blue-icon"></i>
                  </div>
                  <div class="col-md-6">
-                 <h2 class="card-text" id="approvedCount">25</h2>
+                 <h2 class="card-text"><?php echo $approve; ?></h2>
                  </div>
               </div>
           </div>
@@ -45,7 +68,7 @@
               <i class="fas fa-times-circle fa-3x red-icon"></i>
                  </div>
                  <div class="col-md-6">
-                 <h2 class="card-text" id="approvedCount">25</h2>
+                 <h2 class="card-text"><?php echo $disapprove; ?></h2>
                  </div>
               </div>
           </div>
