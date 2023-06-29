@@ -168,11 +168,6 @@
   transform: scale(1.2);
 }
 
-.card-body {
-  background: linear-gradient(to right, #007bff, #00bcd4);
-  height: 200px; /* Adjust the height as needed */
-}
-
    
   footer {
     background: linear-gradient(to right, #007bff, #00bcd4);
@@ -223,7 +218,7 @@
     width: 100%;
     margin: 0 auto;
   }
-  
+   
   @media screen and (max-width: 768px) {
     /* Adjust calendar layout for smaller screens */
     #calendar {
@@ -249,22 +244,7 @@
       to { opacity: 1; }
     }
 
-    .carousel-caption{
-      padding-top: 5%;
-      max-height: 50%;
-    }
-
-    .carousel-item img {
-      max-width: 67%; /* Adjust the maximum width as per your preference */
-      height: 50%;
-      object-fit: cover;
-      padding-left: 30%;
-      padding-bottom: 18%;
-    }
-
-    .background {
-      background: linear-gradient(to bottom, #ffffff, #000000);
-    }
+   
 
     .zoomed-image {
       position: fixed;
@@ -285,3 +265,56 @@
     }
 
 
+   
+
+    .card {
+      position: relative;
+    }
+    
+    .card-img-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card-img-top {
+      transition: transform 0.3s;
+
+    }
+    
+    .card-img-wrapper .social-media {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+
+    }
+    
+    .card-img-wrapper:hover .social-media {
+      opacity: 1;
+    }
+    
+    .card-img-wrapper:hover .card-img-top {
+      transform: scale(1.2);
+    }
+    
+    .card-link {
+      margin-right: 10px;
+      color: pink;
+    }
+
+    .card-link:hover {
+      color: hotpink;
+    }
+
+    #scrollGif {
+      position: fixed;
+      top: 0;
+      right: 10px; /* Adjust the distance from the scrollbar */
+      pointer-events: none;
+      width: 100px; /* Adjust the width of the GIF image */
+      height: auto; /* Maintain the aspect ratio of the GIF */
+      opacity: 0; /* Hide the image initially */
+      transition: opacity 0.3s ease-in-out; /* Add a smooth transition effect */
+    }

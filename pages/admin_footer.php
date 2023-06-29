@@ -46,6 +46,9 @@
   <script src="../static/js/calendar.js"></script>
   <script src="../static/js/validation.js"></script>
 
+   <!-- # Chart -->
+  <script src="../static/js/apexchart.js"></script>
+
   <!-- Cropper -->
   <script src="../static/js/cropper.min.js"></script>
   <!-- <script src="../static/js/set_picture.js"></script> -->

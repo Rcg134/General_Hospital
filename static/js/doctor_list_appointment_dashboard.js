@@ -10,6 +10,7 @@ $(document).on('click', '#btnapp', function () {
       $("#assignmodal").modal("show");
       $("#lblpatientid").text(patientid)
       $("#assigntimestart").val(timestart)
+
     });
 
 

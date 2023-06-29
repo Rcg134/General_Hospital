@@ -110,7 +110,7 @@ function AuthUser(PHP,username,password){
             success: function(dataResult){
                  if(dataResult == true){
                    $("#loading").hide();
-                   location.href = "Front_page_Dental.php"
+                   location.href = "Front_page.php"
                  }
                  else{
                     showerror('Wrong Credentials');

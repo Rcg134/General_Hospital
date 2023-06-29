@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2023 at 11:41 AM
+-- Generation Time: Jun 29, 2023 at 07:54 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -73,6 +73,22 @@ from tbl_appointment
 where doctor_id = iid and 
       status_id = 5 and
       appointment_date = CURDATE()$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_dashboard_appointments_date_get` (IN `iid` INT)   SELECT days.day, IFNULL(COUNT(tbl_appointment.appointment_date), 0) AS appointment_count
+FROM (
+  SELECT 1 AS day UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL
+  SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL
+  SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15 UNION ALL
+  SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20 UNION ALL
+  SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25 UNION ALL
+  SELECT 26 UNION ALL SELECT 27 UNION ALL SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30 UNION ALL
+  SELECT 31
+) AS days
+LEFT JOIN tbl_appointment ON days.day = DAY(tbl_appointment.appointment_date)
+                          AND MONTH(tbl_appointment.appointment_date) = MONTH(CURRENT_DATE())
+                          AND YEAR(tbl_appointment.appointment_date) = YEAR(CURRENT_DATE())
+                          AND tbl_appointment.doctor_id = iid
+GROUP BY days.day$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_dashboard_approve_patients_count` (IN `iid` INT)   select count(patient_id) as 'approve'
 from tbl_appointment
@@ -286,7 +302,8 @@ INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `ap
 (30, '2023-06-24', '21:04:00', NULL, 25, 20, 'dsadasasdaddsaawewqedxawq', NULL, '2023-06-21 13:49:21', 3, 1),
 (31, '2023-06-27', '13:00:00', '14:00:00', 21, 20, 'I have seek ', NULL, '2023-06-27 13:46:54', 4, 1),
 (32, '2023-06-27', '15:00:00', '17:00:00', 21, 23, 'sadsada', NULL, '2023-06-27 13:53:49', 4, 1),
-(33, '2023-06-28', '02:03:00', '03:03:00', 21, 20, 'i have cancer stage 10', NULL, '2023-06-28 13:34:53', 4, 1);
+(33, '2023-06-28', '02:03:00', '03:03:00', 21, 20, 'i have cancer stage 10', NULL, '2023-06-28 13:34:53', 4, 1),
+(34, '2023-06-29', '10:00:00', NULL, 21, 20, 'Need for checkup', NULL, '2023-06-29 13:16:24', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -532,7 +549,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tbl_doctor_details`

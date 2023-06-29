@@ -76,3 +76,28 @@ function showImage(src) {
 function hideImage() {
   document.getElementById('zoomed-image-overlay').style.display = 'none';
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const scrollGif = document.getElementById('scrollGif');
+
+  window.addEventListener('scroll', function() {
+    const scrollOffset = window.scrollY;
+    const containerHeight = window.innerHeight;
+
+    if (scrollOffset > 0) {
+      scrollGif.style.opacity = 1; /* Show the image when scrolling */
+    } else {
+      scrollGif.style.opacity = 0; /* Hide the image when not scrolling */
+    }
+
+    const gifHeight = scrollGif.offsetHeight;
+    const maxOffset = containerHeight - gifHeight;
+    const scrollPercentage = scrollOffset / (document.documentElement.scrollHeight - containerHeight);
+    const gifOffset = maxOffset * scrollPercentage;
+
+    scrollGif.style.top = `${gifOffset}px`;
+  });
+});

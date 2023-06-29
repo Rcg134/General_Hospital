@@ -20,6 +20,26 @@
       <h1>Doctor Dashboard</h1>
     </div><!-- End Page Title -->
 
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Chart for this month</h5>
+            <div class="row">
+              <div class="col-md-12 ">
+                  <div class='text-center'>
+                     <div id="chart"></div>
+                     </div>
+                 </div>
+              </div>
+          </div>
+        </div>
+      </div>
+     </div>    
+  </div>  
+
    <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -222,6 +242,6 @@
   include("admin_footer.php");
 ?>
 
-<script src="../static/js/doctor_calendar_dashboard.js"></script> 
+<script src="../static/js/doctor_visual_dashboard.js"></script> 
 <script src="../static/js/doctor_list_appointment_dashboard.js"></script> 
 

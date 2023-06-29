@@ -109,3 +109,9 @@
 .yellow-icon {
   color: rgb(243, 240, 62);
 }
+
+
+#chart {
+  max-width: 800px;
+  margin: 20px auto;
+}

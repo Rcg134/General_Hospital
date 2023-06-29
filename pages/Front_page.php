@@ -10,13 +10,13 @@
     />
 
     <link href="../img/doctor-login.png" rel="icon">
-   <link href="../img/doctor-login.png" rel="apple-touch-icon">
+    <link href="../img/doctor-login.png" rel="apple-touch-icon">
     <link rel="stylesheet" href="../static/css/bootsrap.min.css">
     <link rel="stylesheet" href="../static/css/customstyle.css">
-
   </head>
 
   <body>
+  <img id="scrollGif" src="../img/loading.gif" alt="Doctor GIF">
     <header>
         <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="logo-container">
@@ -48,7 +48,10 @@
                 <a class="nav-link" href="#services" onclick="animateSection('#services')">Services</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#contact" onclick="animateSection('#contact')">Contact</a>
+                <a class="nav-link" href="#doctors" onclick="animateSection('#doctors')">Doctors</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contactfooter" onclick="animateSection('#contactfooter')">Contact</a>
               </li>
 
                               <?php	
@@ -107,7 +110,7 @@
     </section>
 
     <section id="about" class="py-5">
-      <div class="container">
+      <div class="container text-center">
         <h2>About Us</h2>
         <p>
           At our general hospital, we are committed to providing exceptional healthcare services to our patients. With a team of highly skilled doctors, nurses, and staff, we strive to deliver comprehensive medical care and personalized treatment plans.
@@ -130,8 +133,8 @@
 
 
 
-    <section id="services" class="py-5">
-    <div class="container">
+    <section id="services" class="py-5">s
+    <div class="container text-center">
       <h2>Our Services</h2>
       <div class="row">
         <div class="col-md-6">
@@ -206,70 +209,71 @@
   </div>
 
 
-<section id="doctors" class="py-5">
-  <div class="container background">
+  <section id="doctors" class="py-5">
+  <div class="container background text-center">
     <h2>Our Doctors</h2>
-    <div id="doctor-carousel" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#doctor-carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#doctor-carousel" data-slide-to="1"></li>
-        <li data-target="#doctor-carousel" data-slide-to="2"></li>
-        <li data-target="#doctor-carousel" data-slide-to="3"></li>
-        <li data-target="#doctor-carousel" data-slide-to="4"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="../img/person.jpg" alt="Doctor 1">
-          <div class="carousel-caption">
-            <h3>Dr. Dr. John Smith</h3>
-            <p>Cardiology</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo eu elit consequat mattis. Aliquam malesuada finibus lacus, sed finibus justo vestibulum ac.</p>
+    <small class="d-block mb-4">Meet our team of skilled professionals</small>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="../img/doctor-login.png" alt="Doctor 1" class="card-img-top">
+            <div class="social-media">
+              <a href="#" class="card-link"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="card-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="card-link"><i class="fab fa-instagram"></i></a>
+            </div>
           </div>
-        </div>
-        <div class="carousel-item">
-          <img src="../img/person.jpg" alt="Doctor 2">
-          <div class="carousel-caption">
-            <h3>Dr. Emily Johnson</h3>
-            <p>Pediatrics</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo eu elit consequat mattis. Aliquam malesuada finibus lacus, sed finibus justo vestibulum ac.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="../img/person.jpg" alt="Doctor 3">
-          <div class="carousel-caption">
-            <h3>Dr. Sarah Davis</h3>
-            <p>Obstetrics and Gynecology</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo eu elit consequat mattis. Aliquam malesuada finibus lacus, sed finibus justo vestibulum ac.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="../img/person.jpg" alt="Doctor 4">
-          <div class="carousel-caption">
-            <h3>Dr. Michael Thompson</h3>
-            <p>Orthopedics</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo eu elit consequat mattis. Aliquam malesuada finibus lacus, sed finibus justo vestibulum ac.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="../img/person.jpg" alt="Doctor 5">
-          <div class="carousel-caption">
-            <h3>Dr. Laura Wilson</h3>
-            <p>Oncology</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo eu elit consequat mattis. Aliquam malesuada finibus lacus, sed finibus justo vestibulum ac.</p>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Contact</a>
           </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#doctor-carousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#doctor-carousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="../img/person.jpg" alt="Doctor 2" class="card-img-top">
+            <div class="social-media">
+              <a href="#" class="card-link"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="card-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="card-link"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Contact</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="../img/person.jpg" alt="Doctor 3" class="card-img-top">
+            <div class="social-media">
+              <a href="#" class="card-link"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="card-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="card-link"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Contact</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+
+
+
 
 
       
@@ -312,7 +316,7 @@
     </section>
 
 
-    <footer class="py-3 text-center">
+    <footer id='contactfooter' class="py-3 text-center">
       <div class="container">
         <ul class="list-inline mb-0">
           <li class="list-inline-item">
@@ -324,9 +328,6 @@
           <li class="list-inline-item">
             <a href="#"><img src="../img/instagram.png" alt="Instagram" /></a>
           </li>
-          <!-- <li class="list-inline-item">
-            <a href="#"><img src="linkedin.png" alt="LinkedIn" /></a>
-          </li> -->
         </ul>
         <p class="text-white mt-3">Follow us on social media for updates and promotions!</p>
         <p class="text-white">123 Example Street, City, Country</p>
@@ -374,13 +375,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script> -->
     <script src="../static/js/custom.js"></script>
-    <script>
-  $(document).ready(function() {
-    $('.carousel').carousel({
-      interval: 3000, // Adjust the interval as per your preference (in milliseconds)
-    });
-  });
-</script>
 
   </body>
-</html>
+</html>s
