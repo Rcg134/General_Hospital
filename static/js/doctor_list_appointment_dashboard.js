@@ -85,7 +85,7 @@ $(document).on('click', '#btndis', function () {
         if (dataResult == true) {
            location.reload();
         } else {
-          alert(dataResult);
+          showerror(dataResult);
         }
       },
       error: function (xhr, ajaxOptions, thrownError) {
@@ -115,7 +115,7 @@ $(document).on('click', '#btndis', function () {
         if (dataResult == true) {
            location.reload();
         } else {
-          alert(dataResult);
+          showerror(dataResult);
         }
       },
       error: function (xhr, ajaxOptions, thrownError) {

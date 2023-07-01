@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2023 at 07:54 AM
+-- Generation Time: Jul 01, 2023 at 06:43 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -53,7 +53,8 @@ INNER JOIN tbl_patient_table C ON C.login_id = B.id
 INNER JOIN tbl_status D ON D.id = A.status_id
 WHERE A.doctor_id = iid AND 
       A.active = 1 AND
-      A.appointment_date = CURDATE()
+      A.appointment_date = CURDATE() AND
+      A.status_id != 6
 ORDER BY A.appointment_date ASC,
          A.appointment_time ASC$$
 
@@ -215,6 +216,29 @@ end IF;
 
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `my_appointment_history_get` (IN `iid` INT)   SELECT A.appointment_date,
+       A.appointment_time,
+       A.appointment_time_end,
+       CONCAT(E.firstname, " ", E.lastname) AS 'Doctor_Name',
+       A.message,
+       A.id,
+       D.descrption as "istatus",
+       D.class
+FROM tbl_appointment A
+INNER JOIN tbl_login_user B ON B.id = A.patient_id
+INNER JOIN tbl_patient_table C ON C.login_id = B.id
+INNER JOIN tbl_status D ON D.id = A.status_id
+INNER JOIN tbl_login_user E ON E.id = A.doctor_id
+WHERE A.patient_id = iid AND
+      A.active = 1 AND
+      A.appointment_date = CURDATE()
+ORDER BY A.appointment_date ASC,
+         A.appointment_time ASC$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `my_appointment_status_cancel_update` (IN `iid` INT)   UPDATE tbl_appointment 
+SET status_id = 6
+where id = iid$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `patients_max_check` (IN `p_doctor_id` INT, IN `user_appointment_date` DATE)   BEGIN
    
    DECLARE totaldoctorspatient INT;
@@ -295,15 +319,11 @@ CREATE TABLE `tbl_appointment` (
 --
 
 INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `appointment_time_end`, `patient_id`, `doctor_id`, `message`, `remarks_dissapprove`, `idate`, `status_id`, `active`) VALUES
-(26, '2023-06-24', '06:04:00', NULL, 22, 20, 'sample', 'Dis Ds Dis Ds Dis Ds', '2023-06-21 08:01:11', 5, 1),
-(27, '2023-06-24', '10:04:00', NULL, 21, 20, 'I need to consult', NULL, '2023-06-21 14:20:34', 3, 1),
-(28, '2023-06-24', '17:00:00', NULL, 21, 20, 'neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', NULL, '2023-06-21 10:41:38', 3, 1),
-(29, '2023-06-24', '19:06:00', NULL, 21, 20, 'daweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', NULL, '2023-06-21 10:42:54', 3, 1),
-(30, '2023-06-24', '21:04:00', NULL, 25, 20, 'dsadasasdaddsaawewqedxawq', NULL, '2023-06-21 13:49:21', 3, 1),
-(31, '2023-06-27', '13:00:00', '14:00:00', 21, 20, 'I have seek ', NULL, '2023-06-27 13:46:54', 4, 1),
-(32, '2023-06-27', '15:00:00', '17:00:00', 21, 23, 'sadsada', NULL, '2023-06-27 13:53:49', 4, 1),
-(33, '2023-06-28', '02:03:00', '03:03:00', 21, 20, 'i have cancer stage 10', NULL, '2023-06-28 13:34:53', 4, 1),
-(34, '2023-06-29', '10:00:00', NULL, 21, 20, 'Need for checkup', NULL, '2023-06-29 13:16:24', 3, 1);
+(31, '2023-07-01', '13:00:00', NULL, 21, 20, 'I have seek ', NULL, '2023-06-27 13:46:54', 3, 1),
+(32, '2023-07-01', '15:00:00', NULL, 21, 23, 'sadsada', NULL, '2023-06-27 13:53:49', 3, 1),
+(33, '2023-07-01', '02:03:00', NULL, 21, 20, 'i have cancer stage 10', NULL, '2023-06-28 13:34:53', 6, 1),
+(34, '2023-07-01', '10:00:00', NULL, 21, 20, 'Need for checkup', NULL, '2023-06-29 13:16:24', 6, 1),
+(35, '2023-07-01', '12:00:00', NULL, 21, 20, 'Cancer stage 21', NULL, '2023-07-01 10:07:57', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -464,7 +484,8 @@ CREATE TABLE `tbl_status` (
 INSERT INTO `tbl_status` (`id`, `name`, `descrption`, `class`, `idate`, `active`) VALUES
 (3, 'Pending', 'Pending', 'bg-warning', '2023-06-17 08:14:38', 1),
 (4, 'Approved', 'Approved', 'bg-success', '2023-06-17 08:14:38', 1),
-(5, 'Disapproved', 'Disapproved', 'bg-danger', '2023-06-21 17:04:33', 1);
+(5, 'Disapproved', 'Disapproved', 'bg-danger', '2023-06-21 17:04:33', 1),
+(6, 'Cancel', 'Cancel', 'bg-info', '2023-07-01 10:11:26', 1);
 
 -- --------------------------------------------------------
 
@@ -549,7 +570,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbl_doctor_details`
@@ -585,7 +606,7 @@ ALTER TABLE `tbl_specialize`
 -- AUTO_INCREMENT for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_user_type`

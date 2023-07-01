@@ -20,12 +20,14 @@
               <i class="bi bi-circle"></i><span>Apply</span>
             </a>
           </li>
-          <!-- <li>
-            <a href="forms-layouts.html">
-              <i class="bi bi-circle"></i><span>Form Layouts</span>
+          <li>
+            <a href="my_appointment.php">
+              <i class="bi bi-circle"></i><span>My Appointment</span>
             </a>
           </li>
-          <li>
+
+
+          <!-- <li>
             <a href="forms-editors.html">
               <i class="bi bi-circle"></i><span>Form Editors</span>
             </a>
@@ -34,7 +36,7 @@
             <a href="forms-validation.html">
               <i class="bi bi-circle"></i><span>Form Validation</span>
             </a>
-          </li> -->
+          </li>  -->
         </ul>
       </li>
       
