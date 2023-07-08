@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2023 at 10:30 AM
+-- Generation Time: Jul 08, 2023 at 07:34 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -68,6 +68,11 @@ SET appointment_time=timefrom,
     appointment_time_end=timeto, 
     status_id = istatus
 WHERE id = iid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_approve_time_check` (IN `timestart` TIME)   SELECT COUNT(appointment_time) as 'result'
+FROM tbl_appointment
+WHERE appointment_date >= CURDATE() AND
+      timestart BETWEEN appointment_time AND appointment_time_end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_dashboards_disapprove_patient_count` (IN `iid` INT)   select count(patient_id) as 'disapprove'
 from tbl_appointment
@@ -324,7 +329,10 @@ INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `ap
 (33, '2023-07-01', '02:03:00', NULL, 21, 20, 'i have cancer stage 10', NULL, '2023-06-28 13:34:53', 6, 1),
 (34, '2023-07-01', '10:00:00', NULL, 21, 20, 'Need for checkup', NULL, '2023-06-29 13:16:24', 3, 1),
 (35, '2023-07-01', '12:00:00', NULL, 21, 20, 'Cancer stage 21', NULL, '2023-07-01 10:07:57', 3, 1),
-(36, '2023-07-03', '12:00:00', NULL, 26, 20, 'need to check', NULL, '2023-07-03 16:18:13', 3, 1);
+(36, '2023-07-03', '12:00:00', NULL, 26, 20, 'need to check', NULL, '2023-07-03 16:18:13', 3, 1),
+(37, '2023-07-08', '12:00:00', '14:00:00', 21, 20, 'sick', NULL, '2023-07-08 10:59:59', 4, 1),
+(38, '0000-00-00', '13:00:00', NULL, 21, 20, 'Need to check up', NULL, '2023-07-08 12:28:13', 3, 1),
+(39, '2023-07-08', '15:00:00', '16:00:00', 21, 20, 'need to check up', NULL, '2023-07-08 12:29:01', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -574,7 +582,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `tbl_doctor_details`

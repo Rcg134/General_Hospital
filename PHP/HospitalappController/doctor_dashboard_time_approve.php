@@ -13,7 +13,8 @@
     $Timeto = $_POST['Timeto'];
     $Status = $_POST['Status'];
 
-
+   // check Time if it is already taken by other patient
+   include "../HospitalappController/doctor_time_check.php";
 
 
       $sql = "CALL appointment_patient_update(:Patientid, 
@@ -21,7 +22,8 @@
                                               :Timeto,
                                               :Status)";
 
-  
+      //time has not been taken by other patient                                      
+      if ($result == 0){
         $arraydata= array(
                 'Patientid' => "$Patientid",
                 'Timefrom' => "$Timefrom",
@@ -31,5 +33,10 @@
 
 
        echo  $Conn->SQLConTSQL($sql,$arraydata,$pdo);
-
+      }
+      //time has  been taken by other patient     
+      else if ($result >= 1)
+      {
+        echo false;
+      }
 ?>

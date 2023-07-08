@@ -84,8 +84,8 @@ $(document).on('click', '#btndis', function () {
       success: function (dataResult) {
         if (dataResult == true) {
            location.reload();
-        } else {
-          showerror(dataResult);
+        } else if (dataResult == false) {
+          showerror('This time has been already taken by other patient');
         }
       },
       error: function (xhr, ajaxOptions, thrownError) {
