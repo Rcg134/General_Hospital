@@ -9,7 +9,15 @@
   <link href="../img/doctor-login.png" rel="apple-touch-icon">
   <link rel="stylesheet" href="../static/css/bootsrap.css">
   <link rel="stylesheet" href="../static/css/login.css">
+
+    <?php  
+         session_start();
+         if(!empty($_SESSION["iid"])){
+            header('location:Front_page.php');
+         }
+    ?>
 </head>
+
 
 <body>
   <div class="container">

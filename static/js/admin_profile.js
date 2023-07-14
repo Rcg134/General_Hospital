@@ -1,6 +1,12 @@
 /** @format */
 
-$(function () {});
+$(function () {
+  $("#profcn").keypress(function (event) {
+    if ($(this).val().length === 0 && event.key === "0") {
+      event.preventDefault(); // Prevent the entry of '0' as the first character
+    }
+  });
+});
 
 $("#profileform").submit(function (event) {
   event.preventDefault();

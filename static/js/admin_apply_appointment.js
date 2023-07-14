@@ -33,17 +33,19 @@ function sendappoitnment(PHP, appdate, apptime, selectdoctorid, appmessage) {
     cache: false,
     success: function (dataResult) {
       if (dataResult == true) {
-        showsuccess("Appointment has been send , Waiting for approval")
+        showsuccess("Appointment has been send , Waiting for approval");
         location.reload();
       } else if (dataResult == false) {
-        showerror("Your selected doctor has been reached its maximum patients per day")
+        showerror(
+          "Your selected doctor has been reached its maximum patients per day"
+        );
         return;
       } else {
-        showerror(dataResult)
+        showerror(dataResult);
       }
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      showerror(thrownError)
+      showerror(thrownError);
     },
   });
 }
