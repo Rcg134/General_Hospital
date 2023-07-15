@@ -28,7 +28,7 @@
               <div class="card info-card">
                 <div class="card-body">
        
-                    <div id="calendar"></div>
+                <div id="chart"></div>
 
                 </div>
               </div>
@@ -74,4 +74,4 @@
 
 
 
-<script src="../static/js/admin_apply_appointment.js"></script> 
+<script src="../static/js/admin_visual_dashboard.js"></script> 
