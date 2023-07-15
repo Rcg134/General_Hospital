@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2023 at 12:30 PM
+-- Generation Time: Jul 15, 2023 at 02:15 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -135,7 +135,7 @@ FROM tbl_doctor_details A
 INNER JOIN tbl_max_patients B ON B.doctor_id = A.login_id
 WHERE A.login_id = user_id$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_get` ()   SELECT  A.login_id,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_get` (IN `iid` INT)   SELECT  A.login_id,
         CONCAT( B.firstname, " ",  B.lastname) AS full_name,
         C.description
 FROM `tbl_doctor_details` A
@@ -143,6 +143,8 @@ INNER JOIN `tbl_login_user` B ON B.id = A.login_id
 INNER JOIN `tbl_specialize` C ON C.id = A.specialize_id
 INNER JOIN `tbl_max_patients` D ON  D.doctor_id = B.id
 WHERE  D.value_day <> 0  AND
+       B.id != iid
+AND
 A.active = 1$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Insert_appointment` (IN `Appdate` DATE, IN `Apptime` TIME, IN `Patientid` INT(100), IN `Selectdoctorid` INT(100), IN `Appmessage` VARCHAR(255))   INSERT INTO `tbl_appointment`
@@ -362,10 +364,10 @@ INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `ap
 (40, '2023-07-14', '10:02:00', '11:02:00', 21, 20, 'sample', NULL, '2023-07-14 10:37:51', 4, 1),
 (41, '2023-07-16', '13:00:00', NULL, 21, 20, 'sampl', NULL, '2023-07-15 12:37:23', 3, 1),
 (42, '2023-07-16', '01:00:00', NULL, 21, 20, 'sam', NULL, '2023-07-15 12:37:42', 3, 1),
-(43, '2023-07-15', '17:43:00', NULL, 21, 23, '123', NULL, '2023-07-15 16:43:44', 3, 1),
-(44, '2023-07-15', '17:56:00', NULL, 21, 20, 'saas', NULL, '2023-07-15 17:56:29', 3, 1),
+(43, '2023-07-15', '17:43:00', NULL, 21, 23, '123', NULL, '2023-07-15 16:43:44', 6, 1),
+(44, '2023-07-15', '17:56:00', NULL, 21, 20, 'saas', NULL, '2023-07-15 17:56:29', 6, 1),
 (45, '2023-07-22', '18:57:00', NULL, 21, 20, 'weq', NULL, '2023-07-15 17:57:04', 3, 1),
-(46, '2023-07-15', '18:01:00', NULL, 21, 20, 'sa', NULL, '2023-07-15 18:01:14', 3, 1),
+(46, '2023-07-15', '19:09:00', NULL, 21, 20, 'sa', NULL, '2023-07-15 18:01:14', 3, 1),
 (47, '2023-07-15', '19:00:00', NULL, 21, 20, 'sdaw', NULL, '2023-07-15 18:01:35', 3, 1);
 
 -- --------------------------------------------------------
