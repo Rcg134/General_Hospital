@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2023 at 07:34 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jul 15, 2023 at 10:46 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,6 +37,21 @@ INNER JOIN tbl_patient_table C ON C.login_id = B.id
 WHERE A.appointment_time_end IS NOT NULL AND
       A.doctor_id = iid AND 
       A.active = 1$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `appointment_calendar_get_all` ()   SELECT days.day, IFNULL(COUNT(tbl_appointment.appointment_date), 0) AS appointment_count
+FROM (
+  SELECT 1 AS day UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL
+  SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL
+  SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15 UNION ALL
+  SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20 UNION ALL
+  SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25 UNION ALL
+  SELECT 26 UNION ALL SELECT 27 UNION ALL SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30 UNION ALL
+  SELECT 31
+) AS days
+LEFT JOIN tbl_appointment ON days.day = DAY(tbl_appointment.appointment_date)
+                          AND MONTH(tbl_appointment.appointment_date) = MONTH(CURRENT_DATE())
+                          AND YEAR(tbl_appointment.appointment_date) = YEAR(CURRENT_DATE())
+GROUP BY days.day$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `appointment_get` (IN `iid` INT(100))   SELECT A.appointment_date,
        A.appointment_time,
@@ -106,7 +121,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_dashboard_pending_patients_c
 from tbl_appointment
 where doctor_id = iid and 
       status_id = 3 and
-      appointment_date = CURDATE()$$
+      appointment_date >= CURDATE()$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_details_get` (IN `user_id` INT)   select 
 	A.description, 
@@ -236,13 +251,19 @@ INNER JOIN tbl_status D ON D.id = A.status_id
 INNER JOIN tbl_login_user E ON E.id = A.doctor_id
 WHERE A.patient_id = iid AND
       A.active = 1 AND
-      A.appointment_date = CURDATE()
+      A.appointment_date >= CURDATE()
 ORDER BY A.appointment_date ASC,
          A.appointment_time ASC$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `my_appointment_status_cancel_update` (IN `iid` INT)   UPDATE tbl_appointment 
 SET status_id = 6
 where id = iid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `my_appointment_time_reSchedule` (IN `iid` INT, IN `timeStart` TIME)   UPDATE tbl_appointment SET appointment_time = timeStart
+WHERE id = iid$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `password_update` (IN `iusername` VARCHAR(255), IN `ipassword` VARCHAR(255))   UPDATE tbl_login_user SET password = ipassword
+WHERE username = iusername$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `patients_max_check` (IN `p_doctor_id` INT, IN `user_appointment_date` DATE)   BEGIN
    
@@ -287,7 +308,7 @@ where patient_id = iid and
 CREATE DEFINER=`root`@`localhost` PROCEDURE `patient_dashboard_appointments_count` (IN `iid` INT)   select count(patient_id) as 'appointments'
 from tbl_appointment
 where patient_id = iid and
-      appointment_date = CURDATE()$$
+      appointment_date >= CURDATE()$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `patient_details_get` (IN `user_id` INT)   select 
 	A.description, 
@@ -296,6 +317,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `patient_details_get` (IN `user_id` 
 	A.birthdate
 FROM tbl_patient_table A
 WHERE A.login_id = user_id$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `username_check` (IN `iid` VARCHAR(255))   Select COUNT(username) AS isexist
+FROM tbl_login_user
+WHERE username = iid$$
 
 DELIMITER ;
 
@@ -317,7 +342,7 @@ CREATE TABLE `tbl_appointment` (
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `status_id` int(11) NOT NULL DEFAULT 3,
   `active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_appointment`
@@ -332,7 +357,11 @@ INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `ap
 (36, '2023-07-03', '12:00:00', NULL, 26, 20, 'need to check', NULL, '2023-07-03 16:18:13', 3, 1),
 (37, '2023-07-08', '12:00:00', '14:00:00', 21, 20, 'sick', NULL, '2023-07-08 10:59:59', 4, 1),
 (38, '0000-00-00', '13:00:00', NULL, 21, 20, 'Need to check up', NULL, '2023-07-08 12:28:13', 3, 1),
-(39, '2023-07-08', '15:00:00', '16:00:00', 21, 20, 'need to check up', NULL, '2023-07-08 12:29:01', 4, 1);
+(39, '2023-07-08', '15:00:00', '16:00:00', 21, 20, 'need to check up', NULL, '2023-07-08 12:29:01', 4, 1),
+(40, '2023-07-14', '10:02:00', '11:02:00', 21, 20, 'sample', NULL, '2023-07-14 10:37:51', 4, 1),
+(41, '2023-07-15', '13:00:00', NULL, 21, 20, 'sampl', NULL, '2023-07-15 12:37:23', 3, 1),
+(42, '2023-07-16', '01:00:00', NULL, 21, 20, 'sam', NULL, '2023-07-15 12:37:42', 3, 1),
+(43, '2023-07-15', '17:43:00', NULL, 21, 23, '123', NULL, '2023-07-15 16:43:44', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -351,7 +380,7 @@ CREATE TABLE `tbl_doctor_details` (
   `profile_pic` longblob NOT NULL,
   `idate` datetime(6) NOT NULL DEFAULT current_timestamp(6),
   `active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_doctor_details`
@@ -378,7 +407,7 @@ CREATE TABLE `tbl_login_user` (
   `isadmin` tinyint(1) NOT NULL DEFAULT 0,
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_login_user`
@@ -387,9 +416,9 @@ CREATE TABLE `tbl_login_user` (
 INSERT INTO `tbl_login_user` (`id`, `username`, `password`, `firstname`, `lastname`, `user_type_id`, `isadmin`, `idate`, `active`) VALUES
 (12, 'admin', '$2y$10$6eFqkGnjX6BgfJflfmJdd.lanCPFMgfXq8RCaPFjHzaXnRUmYVRNW', 'user2', 'admin', 1, 1, '2023-06-15 10:12:09', 1),
 (20, 'ren', '$2y$10$3xt2FR6hDpUx/dTOTi4cV.nsTsau7Yfyvj3dOJFnm210WN7Iekcz6', 'renzy', 'gutierrez', 2, 0, '2023-06-17 17:10:50', 1),
-(21, 'coy', '$2y$10$vunQCCLl35NNy.DU91KJXec5c5hmTZrL0JDuKkYDmX7b80seYr.Vi', 'coy', 'coy', 3, 0, '2023-06-17 17:14:15', 1),
+(21, 'coy', '$2y$10$n0zBEAXezTcYVXPA.WWQ3e9evqaK2bFYRTqHRJsKb9Gu8O2o2qfQu', 'coy', 'coy', 3, 0, '2023-06-17 17:14:15', 1),
 (22, 'pol', '$2y$10$y/Kyle0dOhJY3dATB3mWUO4NYYgrWGxW2iNgsLTmOmTEoEv54LPJy', 'pol', 'pol', 3, 0, '2023-06-17 17:15:45', 1),
-(23, 'rus', '$2y$10$rNWJe/z2Cm/r9D10ERuVuexHo.OhIVMJsDdJX1/46lZBQuMRQ.712', 'Russel', 'Gutierrez', 2, 0, '2023-06-19 10:26:50', 1),
+(23, 'rus', '$2y$10$m6l6SEctF18OyXb.rKBj1u5DLe2xO8fJqRPVRSHjdnmCoBkt0asFa', 'Russel', 'Gutierrez', 2, 0, '2023-06-19 10:26:50', 1),
 (25, 'ake', '$2y$10$Q2ohQUjOBS.rRperswOqs.CUEkTCF63YjlIjsg5OjCaaE5UCttpsa', 'Ake', 'Ake', 3, 0, '2023-06-21 13:28:43', 1),
 (26, 'ake', '$2y$10$h3gweGQUnpBATU7mXpmATeCjmVRo125mglb2QxCDT085wAjwaLViW', 'Ake', 'Gutierrez', 3, 0, '2023-07-03 16:16:08', 1);
 
@@ -404,7 +433,7 @@ CREATE TABLE `tbl_max_patients` (
   `value_day` int(100) NOT NULL,
   `doctor_id` int(100) NOT NULL,
   `idate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_max_patients`
@@ -430,7 +459,7 @@ CREATE TABLE `tbl_patient_table` (
   `active` tinyint(1) NOT NULL DEFAULT 1,
   `login_id` int(255) NOT NULL,
   `profile_pic` longblob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_patient_table`
@@ -457,7 +486,7 @@ CREATE TABLE `tbl_specialize` (
   `description` varchar(255) NOT NULL,
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `active` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_specialize`
@@ -487,7 +516,7 @@ CREATE TABLE `tbl_status` (
   `class` varchar(255) NOT NULL,
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_status`
@@ -511,7 +540,7 @@ CREATE TABLE `tbl_user_type` (
   `description` varchar(255) NOT NULL,
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_user_type`
@@ -582,7 +611,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tbl_doctor_details`
