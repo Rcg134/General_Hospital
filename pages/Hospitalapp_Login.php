@@ -78,11 +78,11 @@
             <h3 class="text-center">Forgot Password</h3>
             <form id="forgot-password-form">
               <div class="form-group">
-                <label for="password">password:</label>
-                <input type="password" class="form-control" id="forgotpass" placeholder="Enter your email" required>
+                <label for="text">Username:</label>
+                <input type="text" class="form-control" id="forgotusername" placeholder="Enter your username" required>
               </div>
               <button type="submit" class="btn btn-pink btn-block" onclick="submitForgotPasswordForm(event)">Submit</button>
-              <button type="button" class="btn btn-pink btn-block" onclick="showLoginForm()">Back to Login</button>
+              <p class="text-center mt-3"> <a href="#" onclick="showLoginForm()">Back to Login</a></p>
             </form>
           </div>
           <div class="loading" id="loading">
@@ -96,16 +96,66 @@
   </div>
 
 
+            <!-- Vertically centered Modal Forgot password-->
+            <div class="modal fade" id="forgetpasswordmodal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">New Password</h5>
+                    </div>
+                    <div class="modal-body">
+
+                      <div class="row">
+                        <div class="col-md-12">
+                         <label id='lblusername' hidden></label>
+                          <!-- # SELECT-->
+
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <label for="newpassword" class="form-label">New Password</label>
+                                  <input type="password" class="form-control"  id="newpassword" required>
+                             </div>
+
+
+                             <div class="col-md-12">
+                                  <label for="assigntime" class="form-label">Confirm Password</label>
+                                  <input type="password" class="form-control" id="newconfirmpassword" required>
+                             </div>
+                         </div> 
+                         
+                         
+                        </div>
+                      </div>
+    
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" id="submitappointmentupdate" onclick="submitappointmentupdateForm(event)"  >Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- End Vertically centered Modal-->
+  
+
+
+
  <!--  error message -->
   <div id="alert" class="alert" style="display: none;">
     <!-- <span class="closebtn">&times;</span> -->
    <strong id="errormsg"></strong>
   </div>
 
+
+
   <script src="../static/js/jquery.min.js"></script>
   <script src="../static/js/login.js"></script>
   <script src="../static/js/alertError.js"></script>
+  <script src="../static/js/jquery_3.6.min.js"></script>
+  <script src="../static/js/bootsrap.min.js"></script>
 
+
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   
 </body>
 

@@ -91,17 +91,37 @@ function submitSignupForm(event) {
 function submitForgotPasswordForm(event) {
   event.preventDefault();
 
-  var email = $("#email").val();
+  var forgotusername = $("#forgotusername").val();
+  var lblusername = $("#lblusername").text(forgotusername);
 
-  if (email.trim() === "") {
-    showerror("Please enter your email.");
+  if (forgotusername.trim() === "") {
+    showerror("Please enter your username.");
     return;
   }
 
+  forgotpassword("../PHP/LoginController/username_check.php", forgotusername);
+
   // Perform forgot password process here
-  showerror("Password reset link sent to your email.");
-  $("#forgot-password-form").hide();
-  $("#login-form").show();
+  // $("#forgot-password-form").hide();
+  // $("#login-form").show();
+}
+
+function submitappointmentupdateForm(event) {
+  event.preventDefault();
+
+  var newpassword = $("#newpassword").val();
+  var newconfirmpassword = $("#newconfirmpassword").val();
+  var username = $("#lblusername").text();
+
+  if (newpassword !== newconfirmpassword) {
+    showerror("Password is mismatch");
+  } else {
+    updatepassword(
+      "../PHP/LoginController/password_update.php",
+      username,
+      newpassword
+    );
+  }
 }
 
 function showSignupForm() {
@@ -178,6 +198,59 @@ function registeruser(PHP, username, password, firstname, lastname) {
     error: function (xhr, ajaxOptions, thrownError) {
       alert(thrownError);
       $("#loading").hide();
+    },
+  });
+}
+
+function forgotpassword(PHP, username) {
+  var form_data = new FormData();
+
+  form_data.append("Username", username);
+
+  $.ajax({
+    url: PHP,
+    type: "POST",
+    data: form_data,
+    contentType: false,
+    processData: false,
+    cache: false,
+    success: function (dataResult) {
+      if (dataResult == true) {
+        $("#forgetpasswordmodal").modal("show");
+      } else {
+        showerror("Your Username Does not exist");
+      }
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      showerror(thrownError);
+    },
+  });
+}
+
+function updatepassword(PHP, username, password) {
+  var form_data = new FormData();
+
+  form_data.append("Username", username);
+  form_data.append("Password", password);
+
+  $.ajax({
+    url: PHP,
+    type: "POST",
+    data: form_data,
+    contentType: false,
+    processData: false,
+    cache: false,
+    success: function (dataResult) {
+      if (dataResult == true) {
+        $("#forgetpasswordmodal").modal("hide");
+        $("#forgot-password-form").hide();
+        $("#login-form").show();
+      } else {
+        showerror("There is something wrong please contact the developer");
+      }
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      showerror(thrownError);
     },
   });
 }
