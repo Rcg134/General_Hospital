@@ -1,7 +1,9 @@
 <?php
+$sql = "CALL doctor_get(:Iid)";
 
-$data = $Conn->SqlConSelect("CALL doctor_get()",$pdo);
+$arraydata= array('Iid' => $_SESSION['iid']);
 
+$data = $Conn->SqlConParamSelect($sql,$arraydata,$pdo);
 
 $select = "<div class='col-md-6'>
           <label for='validationDefault05' class='form-label'>Doctor</label>
