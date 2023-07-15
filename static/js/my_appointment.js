@@ -30,13 +30,23 @@ $("#submitresched").click(function () {
   let appointmentid = $("#lblreschedid").text();
   let reschedtime = $("#reschedTimeStart").val();
   let rescheddate = $("#rescheddate").val();
+  const currentDate = new Date();
+  const currentMilitaryTime = currentDate.toLocaleTimeString("en-US", {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
-  reschedyes(
-    "../PHP/HospitalappController/my_appointment_time_reSched.php",
-    appointmentid,
-    reschedtime,
-    rescheddate
-  );
+  if (reschedtime < currentMilitaryTime) {
+    showerror("Your time is not valid");
+  } else {
+    reschedyes(
+      "../PHP/HospitalappController/my_appointment_time_reSched.php",
+      appointmentid,
+      reschedtime,
+      rescheddate
+    );
+  }
 });
 
 function cancelyes(PHP, id) {

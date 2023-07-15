@@ -67,7 +67,7 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
                      <td hidden><?php echo $row['id']; ?></td>
                     <td class="text-wrap">
 
-                      <?php if ($currentstat != "Approved" && $currentstat != "Disapproved") { ?>
+                      <?php if ($currentstat != "Approved" && $currentstat != "Disapproved" && $currentstat != "Cancel" ) { ?>
                          <div class="fixed-cell-width">  
                            <button type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Cancel Appointment" id="btncancel" class="btn btn-danger">
                                <i class="bi bi-exclamation-octagon"></i>

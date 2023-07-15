@@ -44,7 +44,7 @@
                           <?php $minDate = date('Y-m-d'); 
                              echo $minDate;
                              ?>>
-                    </div>
+                      </div>
 
                     <div class="col-md-6">
                       <label for="validationDefault01" class="form-label">Time</label>
