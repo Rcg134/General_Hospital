@@ -39,8 +39,25 @@ $("#profileform").submit(function (event) {
   );
 });
 
-// REQUEST TO SERVER ----------------------------------------
+$("#forgotpasswordform").submit(function (event) {
+  event.preventDefault();
 
+  var newpassword = $("#newPassword").val();
+  var newconfirmpassword = $("#renewPassword").val();
+  var username = $("#iusername").text().trim();
+
+  if (newpassword !== newconfirmpassword) {
+    showerror("Password is mismatch");
+  } else {
+    updatepassword(
+      "../PHP/LoginController/password_update.php",
+      username,
+      newpassword
+    );
+  }
+});
+
+// REQUEST TO SERVER ----------------------------------------
 function profileupdate(
   PHP,
   firstname,
@@ -77,6 +94,32 @@ function profileupdate(
         location.reload();
       } else {
         showerror(dataResult);
+      }
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      showerror(thrownError);
+    },
+  });
+}
+
+function updatepassword(PHP, username, password) {
+  var form_data = new FormData();
+
+  form_data.append("Username", username);
+  form_data.append("Password", password);
+
+  $.ajax({
+    url: PHP,
+    type: "POST",
+    data: form_data,
+    contentType: false,
+    processData: false,
+    cache: false,
+    success: function (dataResult) {
+      if (dataResult == true) {
+        window.location.href = "../../General_Hospital/pages/logout.php";
+      } else {
+        showerror("There is something wrong please contact the developer");
       }
     },
     error: function (xhr, ajaxOptions, thrownError) {

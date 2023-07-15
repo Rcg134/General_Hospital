@@ -95,6 +95,13 @@
                     echo $_SESSION['usertypeid'];
                 ?>
              </label>
+
+
+             <label id=iusername hidden>
+               <?php 
+                    echo $_SESSION['username'];
+                ?>
+             </label>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">

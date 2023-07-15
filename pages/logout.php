@@ -6,6 +6,7 @@
     unset($_SESSION['ln']);
     unset($_SESSION['iid']);
     unset($_SESSION['usertypeid']);
+    unset($_SESSION['username']);
     header('location:Hospitalapp_Login.php');
 ?>
 

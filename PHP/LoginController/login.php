@@ -32,6 +32,7 @@ if ($rowCount > 0){
       $ln = $row['lastname'];
       $iid = $row['id'];
       $usertypeid = $row['user_type_id'];
+      $iusername = $row['username'];
   }
 
   if (password_verify($Password, $authpass)) 
@@ -43,6 +44,7 @@ if ($rowCount > 0){
     $_SESSION['ln'] = $ln;
     $_SESSION['iid'] = $iid;
     $_SESSION['usertypeid'] = $usertypeid;
+    $_SESSION['username'] = $iusername;
     echo true; 
   }
 }

@@ -100,10 +100,6 @@ function submitForgotPasswordForm(event) {
   }
 
   forgotpassword("../PHP/LoginController/username_check.php", forgotusername);
-
-  // Perform forgot password process here
-  // $("#forgot-password-form").hide();
-  // $("#login-form").show();
 }
 
 function submitappointmentupdateForm(event) {
