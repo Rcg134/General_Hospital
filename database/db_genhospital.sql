@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2023 at 10:46 AM
+-- Generation Time: Jul 15, 2023 at 12:30 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -259,7 +259,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `my_appointment_status_cancel_update
 SET status_id = 6
 where id = iid$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `my_appointment_time_reSchedule` (IN `iid` INT, IN `timeStart` TIME)   UPDATE tbl_appointment SET appointment_time = timeStart
+CREATE DEFINER=`root`@`localhost` PROCEDURE `my_appointment_time_reSchedule` (IN `iid` INT, IN `timeStart` TIME, IN `idate` DATE)   UPDATE tbl_appointment SET appointment_time = timeStart ,
+                           appointment_date = idate
 WHERE id = iid$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `password_update` (IN `iusername` VARCHAR(255), IN `ipassword` VARCHAR(255))   UPDATE tbl_login_user SET password = ipassword
@@ -359,9 +360,13 @@ INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `ap
 (38, '0000-00-00', '13:00:00', NULL, 21, 20, 'Need to check up', NULL, '2023-07-08 12:28:13', 3, 1),
 (39, '2023-07-08', '15:00:00', '16:00:00', 21, 20, 'need to check up', NULL, '2023-07-08 12:29:01', 4, 1),
 (40, '2023-07-14', '10:02:00', '11:02:00', 21, 20, 'sample', NULL, '2023-07-14 10:37:51', 4, 1),
-(41, '2023-07-15', '13:00:00', NULL, 21, 20, 'sampl', NULL, '2023-07-15 12:37:23', 3, 1),
+(41, '2023-07-16', '13:00:00', NULL, 21, 20, 'sampl', NULL, '2023-07-15 12:37:23', 3, 1),
 (42, '2023-07-16', '01:00:00', NULL, 21, 20, 'sam', NULL, '2023-07-15 12:37:42', 3, 1),
-(43, '2023-07-15', '17:43:00', NULL, 21, 23, '123', NULL, '2023-07-15 16:43:44', 3, 1);
+(43, '2023-07-15', '17:43:00', NULL, 21, 23, '123', NULL, '2023-07-15 16:43:44', 3, 1),
+(44, '2023-07-15', '17:56:00', NULL, 21, 20, 'saas', NULL, '2023-07-15 17:56:29', 3, 1),
+(45, '2023-07-22', '18:57:00', NULL, 21, 20, 'weq', NULL, '2023-07-15 17:57:04', 3, 1),
+(46, '2023-07-15', '18:01:00', NULL, 21, 20, 'sa', NULL, '2023-07-15 18:01:14', 3, 1),
+(47, '2023-07-15', '19:00:00', NULL, 21, 20, 'sdaw', NULL, '2023-07-15 18:01:35', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -611,7 +616,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `tbl_doctor_details`
