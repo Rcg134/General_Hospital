@@ -72,6 +72,9 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
                            <button type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Cancel Appointment" id="btncancel" class="btn btn-danger">
                                <i class="bi bi-exclamation-octagon"></i>
                            </button>
+                           <button type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Reschedule" id="btnresched" class="btn btn-success">
+                               <i class="bi bi-pencil"></i>
+                           </button>
                          </div>
                       <?php }; ?>
                       
