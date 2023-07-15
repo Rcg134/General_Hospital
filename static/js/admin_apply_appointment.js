@@ -6,14 +6,24 @@ $("#appointmentform").submit(function (event) {
   var apptime = $("#apptime").val();
   var selectdoctorid = $("#selectdoctorid").val();
   var appmessage = $("#appmessage").val();
+  const currentDate = new Date();
+  const currentMilitaryTime = currentDate.toLocaleTimeString("en-US", {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
-  sendappoitnment(
-    "../PHP/HospitalappController/appointment_insert.php",
-    appdate,
-    apptime,
-    selectdoctorid,
-    appmessage
-  );
+  if (apptime < currentMilitaryTime) {
+    showerror("Your time is not valid");
+  } else {
+    sendappoitnment(
+      "../PHP/HospitalappController/appointment_insert.php",
+      appdate,
+      apptime,
+      selectdoctorid,
+      appmessage
+    );
+  }
 });
 
 function sendappoitnment(PHP, appdate, apptime, selectdoctorid, appmessage) {

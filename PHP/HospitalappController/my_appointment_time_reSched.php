@@ -10,17 +10,19 @@
     session_start();
     $Apppoitnmentid = $_POST['Id'];
     $Time = $_POST['Time'];
+    $Idate = $_POST['Idate'];
 
 
 
 
 
-      $sql = "CALL my_appointment_time_reSchedule(:Apppoitnmentid,:Time)";
+      $sql = "CALL my_appointment_time_reSchedule(:Apppoitnmentid,:Time,:Idate)";
 
   
         $arraydata= array(
                 'Apppoitnmentid' => "$Apppoitnmentid",
-                'Time' => "$Time");
+                'Time' => "$Time",
+                'Idate'=>"$Idate");
  
 
 

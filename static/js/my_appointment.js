@@ -8,8 +8,10 @@ $(document).on("click", "#btncancel", function () {
 
 $(document).on("click", "#btnresched", function () {
   var reschedid = $(this).closest("tr").find("td:eq(0)").text();
+  var Idate = $(this).closest("tr").find("td:eq(5)").text().trim();
   var timeStart = $(this).closest("tr").find("td:eq(6)").text().trim();
   $("#lblreschedid").text(reschedid);
+  $("#rescheddate").val(Idate);
   $("#reschedTimeStart").val(timeStart);
   $("#reschedmodal").modal("show");
 });
@@ -27,10 +29,13 @@ $("#submitcancel").click(function () {
 $("#submitresched").click(function () {
   let appointmentid = $("#lblreschedid").text();
   let reschedtime = $("#reschedTimeStart").val();
+  let rescheddate = $("#rescheddate").val();
+
   reschedyes(
     "../PHP/HospitalappController/my_appointment_time_reSched.php",
     appointmentid,
-    reschedtime
+    reschedtime,
+    rescheddate
   );
 });
 
@@ -59,11 +64,12 @@ function cancelyes(PHP, id) {
   });
 }
 
-function reschedyes(PHP, id, timereschedule) {
+function reschedyes(PHP, id, timereschedule, idate) {
   var form_data = new FormData();
 
   form_data.append("Id", id);
   form_data.append("Time", timereschedule);
+  form_data.append("Idate", idate);
 
   $.ajax({
     url: PHP,

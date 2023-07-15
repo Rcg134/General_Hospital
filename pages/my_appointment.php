@@ -113,6 +113,15 @@
                           <div class="col-md-12">
 
                           <div class="row">
+ 
+                              <div class="col-md-12">
+                                  <label for="assigntime" class="form-label">Date</label>
+                                  <input type="date" id="rescheddate" class="form-control" min=
+                                         <?php $minDate = date('Y-m-d'); 
+                                     echo $minDate;
+                                   ?>>
+                              </div>
+                            
                               <div class="col-md-12">
                                   <label for="assigntime" class="form-label">Time Start</label>
                                   <input type="time" class="form-control"  id="reschedTimeStart" required>
