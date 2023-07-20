@@ -184,7 +184,6 @@ function registeruser(PHP, username, password, firstname, lastname) {
     cache: false,
     success: function (dataResult) {
       if (dataResult == true) {
-        alert("Sign-up successful!");
         $("#login-form").show();
         $("#loading").hide();
         $("#signup-form").hide();
