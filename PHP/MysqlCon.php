@@ -1,6 +1,7 @@
-<!--CREATED BY Russel Gutierrez -->
 <?php
 class SqlCon{
+
+  //Created By Russel Gutierrez
 
   public $Servname;
   public $usr;
