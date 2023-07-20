@@ -1,3 +1,4 @@
+<!--CREATED BY Russel Gutierrez -->
 <?php
 class SqlCon{
 
@@ -7,7 +8,7 @@ class SqlCon{
   public $dbname;
 
 
- //Spareparts Database
+ //Database
   function SetDb(){
     $this->Servname = "localhost"; 
     $this->usr = "root"; 
