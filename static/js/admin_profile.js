@@ -3,7 +3,11 @@
 $(function () {
   $("#profcn").keypress(function (event) {
     if ($(this).val().length === 0 && event.key === "0") {
-      event.preventDefault(); // Prevent the entry of '0' as the first character
+      event.preventDefault();
+    }
+
+    if (/[a-zA-Z]/.test(event.key)) {
+      event.preventDefault();
     }
   });
 });
@@ -55,6 +59,34 @@ $("#forgotpasswordform").submit(function (event) {
       newpassword
     );
   }
+});
+
+$("#schedulesubmit").submit(function (event) {
+  event.preventDefault();
+  var Dayfrom = $("#schedfrom").val();
+  var Dayto = $("#schedto").val();
+  var schedtimefrom = $("#schedtimefrom").val();
+  var schedtimeto = $("#schedtimeto").val();
+
+  if (schedtimefrom > schedtimeto) {
+    showerror("Invalid Time");
+    return;
+  }
+
+  if (Dayfrom > Dayto) {
+    if (Dayto !== "1") {
+      showerror("Invalid Day");
+      return;
+    }
+  }
+
+  insertSched(
+    "../PHP/HospitalappController/admin_schedule_insert.php",
+    Dayfrom,
+    Dayto,
+    schedtimefrom,
+    schedtimeto
+  );
 });
 
 // REQUEST TO SERVER ----------------------------------------
@@ -118,6 +150,34 @@ function updatepassword(PHP, username, password) {
     success: function (dataResult) {
       if (dataResult == true) {
         window.location.href = "../../General_Hospital/pages/logout.php";
+      } else {
+        showerror("There is something wrong please contact the developer");
+      }
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      showerror(thrownError);
+    },
+  });
+}
+
+function insertSched(PHP, dayFrom, dayTo, dateFrom, dateTo) {
+  var form_data = new FormData();
+
+  form_data.append("DayFrom", dayFrom);
+  form_data.append("DayTo", dayTo);
+  form_data.append("DateFrom", dateFrom);
+  form_data.append("DateTo", dateTo);
+
+  $.ajax({
+    url: PHP,
+    type: "POST",
+    data: form_data,
+    contentType: false,
+    processData: false,
+    cache: false,
+    success: function (dataResult) {
+      if (dataResult == true) {
+        location.reload();
       } else {
         showerror("There is something wrong please contact the developer");
       }
