@@ -50,6 +50,9 @@ function sendappoitnment(PHP, appdate, apptime, selectdoctorid, appmessage) {
           "Your selected doctor has been reached its maximum patients per day"
         );
         return;
+      } else if (dataResult.trim() === "NO") {
+        showerror("Doctor is not available Select different Time and Date");
+        return;
       } else {
         showerror(dataResult);
       }

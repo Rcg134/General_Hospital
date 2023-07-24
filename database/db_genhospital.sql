@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2023 at 03:47 PM
+-- Generation Time: Jul 24, 2023 at 04:00 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -84,8 +84,12 @@ SET appointment_time=timefrom,
     status_id = istatus
 WHERE id = iid$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Doctors_Sched_Date_Check` (IN `DayFrom` INT, IN `DayTo` INT, IN `TimeFrom` TIME, IN `TimeTo` TIME, IN `DoctorsId` INT)   INSERT INTO `tbl_doctor_sched`(`DayFrom`, `DayTo`, `TimeFrom`, `TimeTo`, `doctorsId`) VALUES 
-(DayFrom, DayTo,TimeFrom,TimeTo , DoctorsId)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Doctors_Sched_Date_Check` (IN `DayFrom` INT, IN `DayTo` INT, IN `TimeFrom` TIME, IN `TimeTo` TIME, IN `DoctorsId` INT)   BEGIN
+DELETE FROM `tbl_doctor_sched` WHERE `doctorsId` = DoctorsId;
+
+INSERT INTO `tbl_doctor_sched`(`DayFrom`, `DayTo`, `TimeFrom`, `TimeTo`, `doctorsId`) VALUES 
+(DayFrom, DayTo,TimeFrom,TimeTo , DoctorsId);
+END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_approve_time_check` (IN `timestart` TIME)   SELECT COUNT(appointment_time) as 'result'
 FROM tbl_appointment
@@ -149,6 +153,15 @@ WHERE  D.value_day <> 0  AND
        B.id != iid
 AND
 A.active = 1$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_schedule_check` (IN `Idate` DATE, IN `iTime` TIME, IN `IdoctorId` INT)   SELECT
+  CASE
+    WHEN (DAYOFWEEK(Idate) BETWEEN DayFrom AND DayTo) AND 
+          (iTime BETWEEN TimeFrom AND TimeTo) THEN 'OK'
+    ELSE 'NO'
+  END AS 'Availability'
+ FROM tbl_doctor_sched
+ WHERE doctorsid = IdoctorId$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Insert_appointment` (IN `Appdate` DATE, IN `Apptime` TIME, IN `Patientid` INT(100), IN `Selectdoctorid` INT(100), IN `Appmessage` VARCHAR(255))   INSERT INTO `tbl_appointment`
 (`appointment_date`, `appointment_time`, `patient_id`, `doctor_id`, `message`)
@@ -350,6 +363,14 @@ CREATE TABLE `tbl_appointment` (
   `active` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_appointment`
+--
+
+INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `appointment_time_end`, `patient_id`, `doctor_id`, `message`, `remarks_dissapprove`, `idate`, `status_id`, `active`) VALUES
+(53, '2023-07-24', '09:51:00', NULL, 31, 29, 'ewq', NULL, '2023-07-24 09:51:09', 3, 1),
+(54, '2023-07-25', '09:54:00', NULL, 31, 29, 'ewq', NULL, '2023-07-24 09:52:01', 3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -374,7 +395,7 @@ CREATE TABLE `tbl_doctor_details` (
 --
 
 INSERT INTO `tbl_doctor_details` (`id`, `contact_number`, `email`, `birthdate`, `description`, `specialize_id`, `login_id`, `profile_pic`, `idate`, `active`) VALUES
-(18, '2333032131', 'russel@gmail.com', '2023-07-23', 'sample', 3, 29, '', '2023-07-23 20:22:05.465946', 1);
+(18, '9051231422', 'russel@gmail.com', '2023-07-23', 'sample', 3, 29, '', '2023-07-23 20:22:05.465946', 1);
 
 -- --------------------------------------------------------
 
@@ -396,7 +417,7 @@ CREATE TABLE `tbl_doctor_sched` (
 --
 
 INSERT INTO `tbl_doctor_sched` (`ID`, `DayFrom`, `DayTo`, `TimeFrom`, `TimeTo`, `doctorsId`) VALUES
-(1, 2, 5, '21:44:00', '23:44:00', 31);
+(2, 2, 4, '09:08:00', '10:08:00', 29);
 
 -- --------------------------------------------------------
 
@@ -613,7 +634,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `tbl_doctor_details`
@@ -625,7 +646,7 @@ ALTER TABLE `tbl_doctor_details`
 -- AUTO_INCREMENT for table `tbl_doctor_sched`
 --
 ALTER TABLE `tbl_doctor_sched`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_login_user`

@@ -18,7 +18,11 @@
     // check max patients
     include "../HospitalappController/doctor_max_patients_check.php";
     
-    if ($result == 0){
+    //check doctor schedule
+    include "../HospitalappController/doctor_schedule_check.php";
+
+
+    if ($result == 0 && $Availability == "OK"){
       $sql = "CALL Insert_appointment(:Appdate, :Apptime, :Patientid, :Selectdoctorid, :Appmessage)";
 
   
@@ -36,6 +40,9 @@
     else if ($result == 1)
     {
       echo false;
+    }
+    else if ($Availability == "NO"){
+      echo "NO";
     }
 
 ?>
