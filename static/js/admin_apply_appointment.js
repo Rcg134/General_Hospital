@@ -1,5 +1,18 @@
 /** @format */
 
+
+
+$("#selectdoctorid").change(function() {
+
+  var Iid = $(this).val();
+  
+  getDoctorSchedule("../PHP/HospitalappController/doctor_schedule_appointment_get.php",
+                    Iid)
+});
+
+
+
+
 $("#appointmentform").submit(function (event) {
   event.preventDefault();
   var appdate = $("#appdate").val();
@@ -53,6 +66,34 @@ function sendappoitnment(PHP, appdate, apptime, selectdoctorid, appmessage) {
       } else if (dataResult.trim() === "NO") {
         showerror("Doctor is not available Select different Time and Date");
         return;
+      } else {
+        showerror(dataResult);
+      }
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      showerror(thrownError);
+    },
+  });
+}
+
+
+
+
+function getDoctorSchedule(PHP, Iid) {
+  var form_data = new FormData();
+
+  form_data.append("Iid", Iid);
+
+  $.ajax({
+    url: PHP,
+    type: "POST",
+    data: form_data,
+    contentType: false,
+    processData: false,
+    cache: false,
+    success: function (dataResult) {
+      if (dataResult != null) {
+          $('#lblSchedule').text(dataResult)
       } else {
         showerror(dataResult);
       }

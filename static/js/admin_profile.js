@@ -179,7 +179,7 @@ function insertSched(PHP, dayFrom, dayTo, dateFrom, dateTo) {
       if (dataResult == true) {
         location.reload();
       } else {
-        showerror("There is something wrong please contact the developer");
+        showerror(dataResult);
       }
     },
     error: function (xhr, ajaxOptions, thrownError) {

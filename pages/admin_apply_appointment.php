@@ -50,10 +50,17 @@
                       <label for="validationDefault01" class="form-label">Time</label>
                       <input type="time" class="form-control" id="apptime" required>
                     </div>
-                   
+
+                    <div class='col-md-6'>              
                         <?php
                             include("../PHP/HospitalappController/select/doctor.php");
                         ?>
+                    </div>
+                    <div class='col-md-6'>
+                        <label for="validationDefault01" class="form-label">Schedule</label>        
+                        <label class="form-control" id="lblSchedule"> </label> 
+                    </div>
+
 
                     <div class="col-md-12">
 

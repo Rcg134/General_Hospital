@@ -9,7 +9,15 @@
 ?>
 
 
+
 <main id="main" class="main">
+
+
+
+<?php
+  include("../PHP/HospitalappController/doctor_schedule_get.php");
+?>
+
 
 
    <section class="section profile">
@@ -38,9 +46,16 @@
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
                 </li>
 
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-schedule">Schedule</button>
-                </li>
+                <?php
+                    if ($_SESSION['usertypeid'] == 2)
+                    {echo "
+                      <li class='nav-item'>
+                           <button class='nav-link' data-bs-toggle='tab' data-bs-target='#profile-schedule'>Schedule</button>
+                      </li>";
+                    }
+                  ?>
+
+    
 
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
@@ -76,10 +91,6 @@
                     ?>
 
                 </div>
-
-
-
-
 
                 <div class="tab-pane fade pt-3" id="profile-schedule">
 
