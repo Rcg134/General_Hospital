@@ -20,13 +20,21 @@ $("#appointmentform").submit(function (event) {
   var selectdoctorid = $("#selectdoctorid").val();
   var appmessage = $("#appmessage").val();
   const currentDate = new Date();
+  // Get the individual components of the current date
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = String(currentDate.getMonth() + 1).padStart(2, '0'); // Add leading zero if needed
+  const currentDay = String(currentDate.getDate()).padStart(2, '0'); // Add leading zero if needed
+
+  // Construct the full date in the format "YYYY-MM-DD"
+  const fullDate = `${currentYear}-${currentMonth}-${currentDay}`;
   const currentMilitaryTime = currentDate.toLocaleTimeString("en-US", {
     hour12: false,
     hour: "2-digit",
     minute: "2-digit",
   });
+  
 
-  if (apptime < currentMilitaryTime) {
+  if (appdate == fullDate && apptime < currentMilitaryTime) {
     showerror("Your time is not valid");
   } else {
     sendappoitnment(
@@ -64,7 +72,7 @@ function sendappoitnment(PHP, appdate, apptime, selectdoctorid, appmessage) {
         );
         return;
       } else if (dataResult.trim() === "NO") {
-        showerror("Doctor is not available Select different Time and Date");
+        showerror("Doctor is not available , Select different Time and Date");
         return;
       } else {
         showerror(dataResult);

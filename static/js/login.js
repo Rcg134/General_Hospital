@@ -55,8 +55,6 @@ function submitLoginForm(event) {
 // SIGN UP ------------------------------
 function submitSignupForm(event) {
   event.preventDefault();
-  $("#signup-form").hide();
-  $("#loading").show();
   var firstname = $("#regfirstname").val();
   var lastname = $("#reglastname").val();
   var username = $("#regusername").val();
@@ -169,7 +167,8 @@ function AuthUser(PHP, username, password) {
 
 function registeruser(PHP, username, password, firstname, lastname) {
   var form_data = new FormData();
-
+  $("#signup-form").hide();
+  $("#loading").show();
   form_data.append("Username", username);
   form_data.append("Password", password);
   form_data.append("Firstname", firstname);
@@ -188,6 +187,16 @@ function registeruser(PHP, username, password, firstname, lastname) {
         $("#loading").hide();
         $("#signup-form").hide();
         $("#signup-form :input").val("");
+      }
+      else if (dataResult == false){
+        showerror("Username already exists");
+        $("#loading").hide();
+        $("#signup-form").show();
+      }
+      else{
+        showerror(dataResult);
+        $("#loading").hide();
+        $("#signup-form").show();
       }
     },
     error: function (xhr, ajaxOptions, thrownError) {

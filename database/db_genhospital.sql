@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2023 at 11:30 AM
+-- Generation Time: Jul 26, 2023 at 03:32 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -355,9 +355,21 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `patient_details_get` (IN `user_id` 
 FROM tbl_patient_table A
 WHERE A.login_id = user_id$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `username_check` (IN `iid` VARCHAR(255))   Select COUNT(username) AS isexist
+CREATE DEFINER=`root`@`localhost` PROCEDURE `username_check` (IN `iusername` VARCHAR(255))   BEGIN
+
+DECLARE countResult INT;
+
+SELECT COUNT(*) INTO countResult
 FROM tbl_login_user
-WHERE username = iid$$
+WHERE username = iusername;
+
+IF countResult > 0 THEN
+    SELECT TRUE as "result";
+ELSE
+    SELECT FALSE as "result"; 
+END IF;
+
+END$$
 
 DELIMITER ;
 
@@ -388,7 +400,9 @@ CREATE TABLE `tbl_appointment` (
 INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `appointment_time_end`, `patient_id`, `doctor_id`, `message`, `remarks_dissapprove`, `idate`, `status_id`, `active`) VALUES
 (53, '2023-07-24', '09:51:00', NULL, 31, 29, 'ewq', NULL, '2023-07-24 09:51:09', 3, 1),
 (54, '2023-07-25', '09:54:00', NULL, 31, 29, 'ewq', NULL, '2023-07-24 09:52:01', 3, 1),
-(55, '2023-07-26', '16:00:00', NULL, 31, 32, 'ewq', NULL, '2023-07-25 15:02:46', 3, 1);
+(55, '2023-07-26', '16:00:00', NULL, 31, 32, 'ewq', NULL, '2023-07-25 15:02:46', 3, 1),
+(56, '2023-07-27', '22:24:00', NULL, 31, 29, '321ewq', NULL, '2023-07-26 08:29:50', 3, 1),
+(57, '2023-07-26', '21:00:00', NULL, 31, 29, 'ewqe', NULL, '2023-07-26 08:30:12', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -488,7 +502,7 @@ CREATE TABLE `tbl_login_user` (
 --
 
 INSERT INTO `tbl_login_user` (`id`, `username`, `password`, `firstname`, `lastname`, `user_type_id`, `isadmin`, `idate`, `active`) VALUES
-(29, 'rcg', '$2y$10$Ue2JiVa6nPX0zRuJp2tz8urWPWKKDaohbjxm7eU4bnRwsP44oGPBW', 'Russel', 'Gutierrez', 2, 0, '2023-07-20 11:59:23', 1),
+(29, 'rcg', '$2y$10$fEI16oQoaGKy0/yfg3Rzz.xmSuVj7bsWvGVsa9dUZ1f0OOP5obEkO', 'Russel', 'Gutierrez', 2, 0, '2023-07-20 11:59:23', 1),
 (30, 'admin', '$2y$10$ScTR1eHt5FC1PbtNBl8Fo.t61.PI9XcRUWmugfrk8XH7elXUl5vyi', 'admin', 'admin', 1, 0, '2023-07-23 19:50:59', 1),
 (31, 'ren', '$2y$10$iOvaXk.ukhO85ozPFrWs8O3ApBDbXN2vOsz1rQC802KpNbdLKW8tS', 'Renzy', 'Gutierrez', 3, 0, '2023-07-23 19:52:14', 1),
 (32, 'stan', '$2y$10$4vn2LqIp/Ty2OQdl.T0JrucSPNJuBBoM2UNnpXBr9gdiscl/Pnbu2', 'Christan', 'Gutierrez', 2, 0, '2023-07-25 14:24:47', 1);
@@ -688,7 +702,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `tbl_day_name`
@@ -712,7 +726,7 @@ ALTER TABLE `tbl_doctor_sched`
 -- AUTO_INCREMENT for table `tbl_login_user`
 --
 ALTER TABLE `tbl_login_user`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `tbl_max_patients`

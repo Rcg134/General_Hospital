@@ -2,6 +2,8 @@
 
   require '../MysqlCon.php';
 
+
+
   $Conn = new SqlCon();
 
   $Conn->SetDb();
@@ -14,8 +16,12 @@
     $lastname = $_POST['Lastname'];
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+    include("../LoginController/registration_username_check.php");
 
-
+    //Not exsisting User
+    if ($isexist == false)
+    {
+       
       $sql = "insert into `tbl_login_user`(username, password, lastname, firstname) 
       VALUES (:username, :password, :lastname, :firstname)";
 
@@ -29,5 +35,11 @@
 
 
        echo  $Conn->SQLConTSQL($sql,$arraydata,$pdo);
+
+    }
+    else{
+      echo false;
+    }
+      
 
 ?>
