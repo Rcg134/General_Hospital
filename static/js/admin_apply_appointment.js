@@ -1,17 +1,13 @@
 /** @format */
 
-
-
-$("#selectdoctorid").change(function() {
-
+$("#selectdoctorid").change(function () {
   var Iid = $(this).val();
-  
-  getDoctorSchedule("../PHP/HospitalappController/doctor_schedule_appointment_get.php",
-                    Iid)
+
+  getDoctorSchedule(
+    "../PHP/HospitalappController/doctor_schedule_appointment_get.php",
+    Iid
+  );
 });
-
-
-
 
 $("#appointmentform").submit(function (event) {
   event.preventDefault();
@@ -22,8 +18,8 @@ $("#appointmentform").submit(function (event) {
   const currentDate = new Date();
   // Get the individual components of the current date
   const currentYear = currentDate.getFullYear();
-  const currentMonth = String(currentDate.getMonth() + 1).padStart(2, '0'); // Add leading zero if needed
-  const currentDay = String(currentDate.getDate()).padStart(2, '0'); // Add leading zero if needed
+  const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0"); // Add leading zero if needed
+  const currentDay = String(currentDate.getDate()).padStart(2, "0"); // Add leading zero if needed
 
   // Construct the full date in the format "YYYY-MM-DD"
   const fullDate = `${currentYear}-${currentMonth}-${currentDay}`;
@@ -32,7 +28,6 @@ $("#appointmentform").submit(function (event) {
     hour: "2-digit",
     minute: "2-digit",
   });
-  
 
   if (appdate == fullDate && apptime < currentMilitaryTime) {
     showerror("Your time is not valid");
@@ -68,11 +63,14 @@ function sendappoitnment(PHP, appdate, apptime, selectdoctorid, appmessage) {
         location.reload();
       } else if (dataResult == false) {
         showerror(
-          "Your selected doctor has been reached its maximum patients per day"
+          "Your selected doctor has been reached its maximum patients per day Or Time is already resereve"
         );
         return;
       } else if (dataResult.trim() === "NO") {
         showerror("Doctor is not available , Select different Time and Date");
+        return;
+      } else if (dataResult.trim() === "reserved") {
+        showerror("Time is already reserved");
         return;
       } else {
         showerror(dataResult);
@@ -83,9 +81,6 @@ function sendappoitnment(PHP, appdate, apptime, selectdoctorid, appmessage) {
     },
   });
 }
-
-
-
 
 function getDoctorSchedule(PHP, Iid) {
   var form_data = new FormData();
@@ -101,7 +96,7 @@ function getDoctorSchedule(PHP, Iid) {
     cache: false,
     success: function (dataResult) {
       if (dataResult != null) {
-          $('#lblSchedule').text(dataResult)
+        $("#lblSchedule").text(dataResult);
       } else {
         showerror(dataResult);
       }

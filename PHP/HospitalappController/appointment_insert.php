@@ -21,8 +21,12 @@
     //check doctor schedule
     include "../HospitalappController/doctor_schedule_check.php";
 
+    //check if patient time is already reserve
+    include "../HospitalappController/patient_approve_time_check.php";
+    
 
-    if ($result == 0 && $Availability == "OK"){
+
+    if ($result == 0 && $Availability == "OK" && $Time_reserve == 0){
       $sql = "CALL Insert_appointment(:Appdate, :Apptime, :Patientid, :Selectdoctorid, :Appmessage)";
 
   
@@ -44,5 +48,9 @@
     else if ($Availability == "NO"){
       echo "NO";
     }
+    else if ($Time_reserve == 1){
+      echo "reserved";
+    }
+    
 
 ?>

@@ -8,7 +8,7 @@ $data = $Conn->SqlConParamSelect($sql,$arraydata,$pdo);
 $select = "<label for='validationDefault05' class='form-label'>Doctor</label>
            <select class='form-control' id='selectdoctorid'>";
 
-$option = "";
+$option = "<option value> Select Doctor </option>";
 
 foreach($data as $row) 
 {

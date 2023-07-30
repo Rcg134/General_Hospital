@@ -61,11 +61,10 @@
                         <label class="form-control" id="lblSchedule"> </label> 
                     </div>
 
-
                     <div class="col-md-12">
 
                       <label for="validationDefault05" class="form-label">Message</label>
-                      <textarea class="form-control" placeholder="Biography" id="appmessage" required></textarea>
+                      <textarea class="form-control" placeholder="Symptoms" id="appmessage" required></textarea>
            
                     </div>
                     <div class="col-12">

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2023 at 03:32 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jul 30, 2023 at 07:04 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -337,6 +337,12 @@ WHERE A.status_id = 4 AND
       A.patient_id = iid AND 
       A.active = 1$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `patient_approve_time_check` (IN `iid` INT, IN `time_In` TIME)   SELECT COUNT(A.id) AS "Time_reserve"
+FROM tbl_appointment A
+WHERE A.doctor_id = iid AND
+      time_In BETWEEN A.appointment_time AND A.appointment_time_end AND
+      A.status_id =  4$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `patient_dashboards_disapprove_count` (IN `iid` INT)   select count(patient_id) as 'appointments'
 from tbl_appointment
 where patient_id = iid and 
@@ -391,7 +397,7 @@ CREATE TABLE `tbl_appointment` (
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `status_id` int(11) NOT NULL DEFAULT 3,
   `active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_appointment`
@@ -402,7 +408,10 @@ INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `ap
 (54, '2023-07-25', '09:54:00', NULL, 31, 29, 'ewq', NULL, '2023-07-24 09:52:01', 3, 1),
 (55, '2023-07-26', '16:00:00', NULL, 31, 32, 'ewq', NULL, '2023-07-25 15:02:46', 3, 1),
 (56, '2023-07-27', '22:24:00', NULL, 31, 29, '321ewq', NULL, '2023-07-26 08:29:50', 3, 1),
-(57, '2023-07-26', '21:00:00', NULL, 31, 29, 'ewqe', NULL, '2023-07-26 08:30:12', 3, 1);
+(57, '2023-07-26', '21:00:00', NULL, 31, 29, 'ewqe', NULL, '2023-07-26 08:30:12', 3, 1),
+(58, '2023-08-02', '21:00:00', '23:27:00', 31, 29, 'Sample', NULL, '2023-07-28 15:42:33', 4, 1),
+(59, '2023-08-02', '08:00:00', '12:09:00', 31, 29, 'sa', NULL, '2023-07-30 12:32:32', 4, 1),
+(60, '2023-08-02', '12:10:00', NULL, 31, 29, 'ewqq', NULL, '2023-07-30 13:01:56', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -414,7 +423,7 @@ CREATE TABLE `tbl_day_name` (
   `id` int(11) NOT NULL,
   `Id_Day` int(11) NOT NULL,
   `Description` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_day_name`
@@ -446,7 +455,7 @@ CREATE TABLE `tbl_doctor_details` (
   `profile_pic` longblob NOT NULL,
   `idate` datetime(6) NOT NULL DEFAULT current_timestamp(6),
   `active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_doctor_details`
@@ -469,7 +478,7 @@ CREATE TABLE `tbl_doctor_sched` (
   `TimeFrom` time NOT NULL,
   `TimeTo` time NOT NULL,
   `doctorsId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_doctor_sched`
@@ -477,7 +486,7 @@ CREATE TABLE `tbl_doctor_sched` (
 
 INSERT INTO `tbl_doctor_sched` (`ID`, `DayFrom`, `DayTo`, `TimeFrom`, `TimeTo`, `doctorsId`) VALUES
 (37, 2, 6, '15:24:26', '15:24:26', 32),
-(39, 2, 5, '21:00:00', '23:00:00', 29);
+(40, 2, 5, '08:00:00', '23:00:00', 29);
 
 -- --------------------------------------------------------
 
@@ -495,7 +504,7 @@ CREATE TABLE `tbl_login_user` (
   `isadmin` tinyint(1) NOT NULL DEFAULT 0,
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_login_user`
@@ -518,7 +527,7 @@ CREATE TABLE `tbl_max_patients` (
   `value_day` int(100) NOT NULL,
   `doctor_id` int(100) NOT NULL,
   `idate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_max_patients`
@@ -544,7 +553,7 @@ CREATE TABLE `tbl_patient_table` (
   `active` tinyint(1) NOT NULL DEFAULT 1,
   `login_id` int(255) NOT NULL,
   `profile_pic` longblob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_patient_table`
@@ -565,7 +574,7 @@ CREATE TABLE `tbl_specialize` (
   `description` varchar(255) NOT NULL,
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `active` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_specialize`
@@ -595,7 +604,7 @@ CREATE TABLE `tbl_status` (
   `class` varchar(255) NOT NULL,
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_status`
@@ -619,7 +628,7 @@ CREATE TABLE `tbl_user_type` (
   `description` varchar(255) NOT NULL,
   `idate` datetime NOT NULL DEFAULT current_timestamp(),
   `active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_user_type`
@@ -702,7 +711,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `tbl_day_name`
@@ -720,7 +729,7 @@ ALTER TABLE `tbl_doctor_details`
 -- AUTO_INCREMENT for table `tbl_doctor_sched`
 --
 ALTER TABLE `tbl_doctor_sched`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `tbl_login_user`
