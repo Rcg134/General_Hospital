@@ -10,6 +10,28 @@ $(function () {
       event.preventDefault();
     }
   });
+
+  $("#proffn").on("input", function(event) {
+    var inputValue = $(this).val();
+    var sanitizedValue = inputValue.replace(/\d/g, '');
+
+
+    if (inputValue !== sanitizedValue) {
+      $(this).val(sanitizedValue);
+    }
+  });
+
+
+  $("#profln").on("input", function(event) {
+    var inputValue = $(this).val();
+    var sanitizedValue = inputValue.replace(/\d/g, '');
+
+
+    if (inputValue !== sanitizedValue) {
+      $(this).val(sanitizedValue);
+    }
+  });
+
 });
 
 $("#profileform").submit(function (event) {
@@ -186,4 +208,17 @@ function insertSched(PHP, dayFrom, dayTo, dateFrom, dateTo) {
       showerror(thrownError);
     },
   });
+}
+
+
+//Function
+
+
+const NotallowNumber = (iid) =>
+{
+  var inputValue = $(iid).val();
+
+  if (/\d/.test(inputValue)) {
+    $(iid).val(inputValue.replace(/\d/g, ''));
+  }
 }

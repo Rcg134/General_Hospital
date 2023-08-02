@@ -7,9 +7,10 @@ $result;
 
 $arraydata= array(
     'Apptime' => "$Apptime",
-    'Selectdoctorid' => "$Selectdoctorid");
+    'Selectdoctorid' => "$Selectdoctorid",
+     'Appdate'=> "$Appdate");
 
-$data = $Conn->SqlConParamSelect("CALL patient_approve_time_check(:Selectdoctorid ,:Apptime)",$arraydata,$pdo);
+$data = $Conn->SqlConParamSelect("CALL patient_approve_time_check(:Selectdoctorid ,:Apptime ,:Appdate)",$arraydata,$pdo);
 
 
     foreach($data as $row) 
