@@ -9,7 +9,7 @@
       href="../static/css/bootsrap.css"
     />
 
-    <link href="../img/doctor-login.png" rel="icon">
+    <link href="../img/Blue Gradient Medical Care Logo.png" rel="icon">
     <link href="../img/doctor-login.png" rel="apple-touch-icon">
     <link rel="stylesheet" href="../static/css/bootsrap.min.css">
     <link rel="stylesheet" href="../static/css/customstyle.css">
@@ -20,6 +20,7 @@
     <header>
         <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="logo-container">
+            <img class="loginLogo" src="../img/Blue Gradient Medical Care Logo.png" alt="Dentist Website Logo">
               </div>
                <a class="navbar-brand" href="#">
                  <span class="beautiful-letter">G</span>eneral Hospital

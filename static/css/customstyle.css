@@ -57,6 +57,7 @@
      text-transform: uppercase;
      display: inline-block;
      transition: transform 0.5s ease;
+     padding-left: 5%;
    }
 
 
@@ -318,3 +319,15 @@
       opacity: 0; /* Hide the image initially */
       transition: opacity 0.3s ease-in-out; /* Add a smooth transition effect */
     }
+
+
+
+
+    
+  .loginLogo {
+    height: 50px; 
+    border-radius: 50%; 
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #333;
+  }

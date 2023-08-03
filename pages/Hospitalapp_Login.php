@@ -5,7 +5,7 @@
   <title>Dentist Website - Login</title>
 
 
-  <link href="../img/doctor-login.png" rel="icon">
+  <link href="../img/Blue Gradient Medical Care Logo.png" rel="icon">
   <link href="../img/doctor-login.png" rel="apple-touch-icon">
   <link rel="stylesheet" href="../static/css/bootsrap.css">
   <link rel="stylesheet" href="../static/css/login.css">
@@ -25,7 +25,7 @@
       <div class="col-md-6 offset-md-3">
         <div class="card">
           <div class="logo">
-            <img src="../img/doctor-login.png" alt="Dentist Website Logo">
+            <img class="loginLogo" src="../img/Blue Gradient Medical Care Logo.png" alt="Dentist Website Logo">
           </div>
           <div id="login-form">
             <form id="login-form">

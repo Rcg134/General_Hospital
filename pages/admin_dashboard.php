@@ -27,7 +27,11 @@
             <div class="col-md-12">
               <div class="card info-card">
                 <div class="card-body">
-       
+                  <hr>
+                <div class="col-md-12">
+                   <h3>Appointment for all Doctors</h3>
+                <div>
+                <hr>
                 <div id="chart"></div>
 
                 </div>
@@ -46,9 +50,14 @@
             <div class="col-md-12">
               <div class="card info-card">
                 <div class="card-body">
+                <hr>
+                <div class="col-md-12">
+                   <h3>Doctor Performance Tracker</h3>
+                <div>
+                <hr>
                  <div class="row">
                   <div class="col-md-12">
-
+                      <div id="DoctorPerformanceChart"></div>
                    </div>
                   </div>
                 </div>

@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../img/doctor-login.png" rel="icon">
+  <link href="../img/Blue Gradient Medical Care Logo.png" rel="icon">
   <link href="../img/doctor-login.png" rel="apple-touch-icon">
 
   
@@ -49,7 +49,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="#" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+      <img class="loginLogo" src="../img/Blue Gradient Medical Care Logo.png" alt="Dentist Website Logo">
         <span class="d-none d-lg-block">Panel</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>

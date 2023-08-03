@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2023 at 04:30 AM
+-- Generation Time: Aug 03, 2023 at 06:21 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -25,6 +25,13 @@ DELIMITER $$
 --
 -- Procedures
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `admin_doctor_performance_chart` ()   SELECT CONCAT(B.firstname, " ", B.lastname) AS 'Doctor_Name',
+       COUNT(A.doctor_id) AS "TotalAppointments"
+FROM tbl_appointment A
+LEFT JOIN tbl_login_user B ON B.id = A.doctor_id
+WHERE A.status_id = 4
+GROUP BY A.doctor_id, B.firstname, B.lastname$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `appointment_calendar_get` (IN `iid` INT)   SELECT A.appointment_date,
        A.appointment_time,
        A.appointment_time_end,
@@ -280,6 +287,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `my_appointment_history_get` (IN `ii
        A.appointment_time_end,
        CONCAT(E.firstname, " ", E.lastname) AS 'Doctor_Name',
        A.message,
+       A.doctor_id,
        A.id,
        D.descrption as "istatus",
        D.class
@@ -416,8 +424,12 @@ INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `ap
 (58, '2023-08-02', '21:00:00', '23:27:00', 31, 29, 'Sample', NULL, '2023-07-28 15:42:33', 4, 1),
 (59, '2023-08-02', '08:00:00', '12:09:00', 31, 29, 'sa', NULL, '2023-07-30 12:32:32', 4, 1),
 (60, '2023-08-02', '12:10:00', '13:00:00', 31, 29, 'ewqq', NULL, '2023-07-30 13:01:56', 4, 1),
-(61, '2023-08-03', '13:00:00', NULL, 31, 29, 'weqe', NULL, '2023-08-02 09:45:47', 3, 1),
-(62, '2023-08-03', '08:00:00', NULL, 31, 29, 'ewq', NULL, '2023-08-02 10:05:11', 3, 1);
+(61, '2023-08-03', '13:00:00', '14:00:00', 31, 29, 'weqe', NULL, '2023-08-02 09:45:47', 4, 1),
+(62, '2023-08-03', '08:00:00', '12:00:00', 31, 29, 'ewq', NULL, '2023-08-02 10:05:11', 4, 1),
+(63, '2023-08-04', '09:55:00', NULL, 31, 29, 'ewqe', NULL, '2023-08-03 09:31:38', 6, 1),
+(64, '2023-08-04', '12:02:00', '13:00:00', 31, 32, 'ewqe', NULL, '2023-08-03 10:23:00', 4, 1),
+(65, '2023-08-04', '15:23:00', '16:00:00', 31, 32, 'ewqweq', NULL, '2023-08-03 10:23:17', 4, 1),
+(66, '2023-08-11', '15:20:00', NULL, 31, 32, 'ewq', NULL, '2023-08-03 10:25:09', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -491,8 +503,8 @@ CREATE TABLE `tbl_doctor_sched` (
 --
 
 INSERT INTO `tbl_doctor_sched` (`ID`, `DayFrom`, `DayTo`, `TimeFrom`, `TimeTo`, `doctorsId`) VALUES
-(37, 2, 6, '15:24:26', '15:24:26', 32),
-(40, 2, 5, '08:00:00', '23:00:00', 29);
+(40, 2, 5, '08:00:00', '23:00:00', 29),
+(41, 2, 6, '12:00:26', '15:24:26', 32);
 
 -- --------------------------------------------------------
 
@@ -717,7 +729,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `tbl_day_name`
@@ -735,7 +747,7 @@ ALTER TABLE `tbl_doctor_details`
 -- AUTO_INCREMENT for table `tbl_doctor_sched`
 --
 ALTER TABLE `tbl_doctor_sched`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tbl_login_user`

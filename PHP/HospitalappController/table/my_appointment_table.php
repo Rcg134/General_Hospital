@@ -40,6 +40,7 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
                 <th hidden>Time Start real value</th>
                 <th>Time Start</th>
                 <th>Time End</th>
+                <th hidden>DoctorId</th>
             </tr>
         </thead>
         <tbody>
@@ -48,6 +49,7 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
                   $origtimefrom = $row['appointment_time'];
                   $origtimeto = $row['appointment_time_end'];
                   $doctorname = $row['Doctor_Name'];
+                  $doctorId = $row['doctor_id'];
                   $timeFormatFrom = "";
                   $timeFormatEnd = "";
 
@@ -125,8 +127,13 @@ $currentPageData = array_slice($data, $startIndex, $itemsPerPage);
                         <?php echo $timeFormatEnd; ?>
                       </div>
                     </td>
+                    <td hidden class="text-wrap">
+                      <div class="fixed-cell-width">  
+                        <?php echo $doctorId; ?>
+                      </div>
+                    </td>
 
-
+                    
                 </tr>
             <?php endforeach; ?>
         </tbody>
