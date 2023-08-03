@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2023 at 07:29 AM
+-- Generation Time: Aug 03, 2023 at 08:58 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -372,6 +372,18 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `patient_details_get` (IN `user_id` 
 	A.birthdate
 FROM tbl_patient_table A
 WHERE A.login_id = user_id$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `patient_doctor_schedule_calendar_get` (IN `iid` INT)   SELECT A.appointment_date,
+       A.appointment_time,
+       A.appointment_time_end,
+       CONCAT(B.firstname, ' ', B.lastname) AS full_name,
+       A.message
+FROM tbl_appointment A
+INNER JOIN tbl_login_user B ON B.id = A.patient_id
+INNER JOIN tbl_patient_table C ON C.login_id = B.id
+WHERE A.status_id = 4 AND
+      A.doctor_id = iid AND 
+      A.active = 1$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `username_check` (IN `iusername` VARCHAR(255))   BEGIN
 
