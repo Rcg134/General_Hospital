@@ -167,6 +167,7 @@
                       <div class="row">
                         <div class="col-md-12">
                          <label id='lblpatientid' hidden></label>
+                         <label id='idate' hidden></label>
                           <!-- # SELECT-->
 
                           <div class="row">

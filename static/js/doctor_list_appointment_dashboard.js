@@ -2,11 +2,12 @@
 
 $(document).on("click", "#btnapp", function () {
   var patientid = $(this).closest("tr").find("td:eq(0)").text();
-  // var patientname = $(this).closest("tr").find('td:eq(0)').text();
+  var idate = $(this).closest("tr").find('td:eq(5)').text();
   var timestart = $(this).closest("tr").find("td:eq(6)").text().trim();
 
   $("#assignmodal").modal("show");
   $("#lblpatientid").text(patientid);
+  $("#idate").text(idate);
   $("#assigntimestart").val(timestart);
 });
 
@@ -21,6 +22,7 @@ $("#submitappointmentupdate").click(function () {
   var timeend = $("#assigntimeend").val();
   var patientid = $("#lblpatientid").text();
   var timestart = $("#assigntimestart").val();
+  var idate = $("#idate").text().trim();
   var status = 4;
 
   if (timestart !== "" && timeend !== "") {
@@ -32,7 +34,8 @@ $("#submitappointmentupdate").click(function () {
         patientid,
         timestart,
         timeend,
-        status
+        status,
+        idate
       );
     }
   } else {
@@ -56,13 +59,14 @@ $("#submitappointmentupdatedisapprove").click(function () {
   }
 });
 
-function timesetapprove(PHP, patientid, timestart, timeend, status) {
+function timesetapprove(PHP, patientid, timestart, timeend, status,idate) {
   var form_data = new FormData();
 
   form_data.append("Patientid", patientid);
   form_data.append("Timefrom", timestart);
   form_data.append("Timeto", timeend);
   form_data.append("Status", status);
+  form_data.append("Idate", idate);
 
   $.ajax({
     url: PHP,

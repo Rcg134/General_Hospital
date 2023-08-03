@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2023 at 06:21 AM
+-- Generation Time: Aug 03, 2023 at 07:29 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -98,9 +98,9 @@ INSERT INTO `tbl_doctor_sched`(`DayFrom`, `DayTo`, `TimeFrom`, `TimeTo`, `doctor
 (DayFrom, DayTo, TimeFrom, TimeTo, DoctorsId);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_approve_time_check` (IN `timestart` TIME)   SELECT COUNT(appointment_time) as 'result'
+CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_approve_time_check` (IN `timestart` TIME, IN `idate` DATETIME)   SELECT COUNT(appointment_time) as 'result'
 FROM tbl_appointment
-WHERE appointment_date >= CURDATE() AND
+WHERE appointment_date = idate AND
       timestart BETWEEN appointment_time AND appointment_time_end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `doctor_dashboards_disapprove_patient_count` (IN `iid` INT)   select count(patient_id) as 'disapprove'
@@ -429,7 +429,10 @@ INSERT INTO `tbl_appointment` (`id`, `appointment_date`, `appointment_time`, `ap
 (63, '2023-08-04', '09:55:00', NULL, 31, 29, 'ewqe', NULL, '2023-08-03 09:31:38', 6, 1),
 (64, '2023-08-04', '12:02:00', '13:00:00', 31, 32, 'ewqe', NULL, '2023-08-03 10:23:00', 4, 1),
 (65, '2023-08-04', '15:23:00', '16:00:00', 31, 32, 'ewqweq', NULL, '2023-08-03 10:23:17', 4, 1),
-(66, '2023-08-11', '15:20:00', NULL, 31, 32, 'ewq', NULL, '2023-08-03 10:25:09', 3, 1);
+(66, '2023-08-11', '15:20:00', '16:53:00', 31, 32, 'ewq', NULL, '2023-08-03 10:25:09', 4, 1),
+(67, '2023-08-09', '12:01:00', '15:00:00', 31, 32, 'weq', NULL, '2023-08-03 12:55:53', 4, 1),
+(68, '2023-08-10', '12:01:00', '14:00:00', 31, 32, 'ewq', NULL, '2023-08-03 13:20:18', 4, 1),
+(69, '2023-08-10', '12:30:00', NULL, 31, 32, 'ewq', NULL, '2023-08-03 13:21:55', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -729,7 +732,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_appointment`
 --
 ALTER TABLE `tbl_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `tbl_day_name`

@@ -11,6 +11,7 @@
     $Patientid = $_POST['Patientid'];
     $Timefrom = $_POST['Timefrom'];
     $Timeto = $_POST['Timeto'];
+    $Idate = $_POST['Idate'];
     $Status = $_POST['Status'];
 
    // check Time if it is already taken by other patient
