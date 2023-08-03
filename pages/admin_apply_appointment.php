@@ -89,6 +89,30 @@
      <!-- #region -->
 
 
+
+     
+    <!-- # Calendar -->
+    <section class="section dashboard">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <!-- Start Content -->
+            <div class="col-md-12">
+              <div class="card info-card">
+                <div class="card-body">
+                <h5 class="card-title">Doctor Schedule</h5>
+                   <div class="col-md-12">
+                        <div id="doctorcalendarschedule"></div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Content -->
+         </div>
+        </div>
+      </div>
+
+
   </main>
   <!-- End #main -->
 
