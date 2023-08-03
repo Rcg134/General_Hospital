@@ -30,12 +30,6 @@
                    <i class='bi bi-circle'></i><span>Newly Created User</span>
                  </a>
                </li>
-               <li>
-                 <a href='components-alerts.html'>
-                   <i class='bi bi-circle'></i><span>All Users</span>
-                 </a>
-               </li>
-               <li>
              </ul>
      </li>
       
